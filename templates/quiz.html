@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <div class="question ml-sm-5 pl-sm-5 my-2">
+        <div class="py-2 h5"><b>Q. Which role do you take in a project?</b></div>
+        <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3 options">
+            <label class="options">Leader role      <input type="radio" name="role"> <span class="checkmark"></span> </label>
+            <label class="options">The listener     <input type="radio" name="role"> <span class="checkmark"></span> </label>
+            <label class="options">Idea creator     <input type="radio" name="role"> <span class="checkmark"></span> </label>
+            <label class="options">Taking notes     <input type="radio" name="role"> <span class="checkmark"></span> </label>
+        </div>
+    </div>
+</div>
+<div class="container my-5">
+    <div class="question ml-sm-5 pl-sm-5 my-2">
+        <div class="py-2 h5"><b>Q. What would your friends describe you as?</b></div>
+        <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3 options">
+            <label class="options">Likes company and comes up with fun stuff        <input type="radio" name="friends"> <span class="checkmark"></span> </label>
+            <label class="options">Accurate, picky, and always on time              <input type="radio" name="friends"> <span class="checkmark"></span> </label>
+            <label class="options">Purposeful and not afraid to say what you think  <input type="radio" name="friends"> <span class="checkmark"></span> </label>
+            <label class="options">Caring and always stands up                      <input type="radio" name="friends"> <span class="checkmark"></span> </label>
+        </div>
+    </div>
+</div>
+<div class="container my-5">
+    <div class="question ml-sm-5 pl-sm-5 my-2">
+        <div class="py-2 h5"><b>Q. How do you speak in front of a group?</b></div>
+        <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3 options">
+            <label class="options">I gesture and move a lot                                                             <input type="radio" name="speak"> <span class="checkmark"></span> </label>
+            <label class="options">I am gathered and speak in a calm and harmonious voice                               <input type="radio" name="speak"> <span class="checkmark"></span> </label>
+            <label class="options">I speak with pressure in my voice and am not afraid to ask questions to the group    <input type="radio" name="speak"> <span class="checkmark"></span> </label>
+            <label class="options">I prefer to sit down and gladly present facts and information in detail              <input type="radio" name="speak"> <span class="checkmark"></span> </label>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <a href="{{url_for('quiz') }}" class="btn btn-lg btn-default">Calculate results</a>
+    </div>
+</div>
+
+{% endblock %}

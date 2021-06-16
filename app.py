@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -16,8 +16,12 @@ class data(db.Model):
 def index():
     return render_template('index.html')
 
-@app.route('/quiz')
+@app.route('/quiz', methods=['GET', 'POST'])
 def quiz():
+    if request.method == 'POST':
+        print(request.form.to_dict())
+        return redirect(url_for('result'))
+    
     return render_template('quiz.html')
 
 @app.route('/result')

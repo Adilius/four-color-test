@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, request, redirect
 from app import app, db
 from app.models import Answer
+from app.prediction_engine import engine
 
 @app.route('/')
 def index():
@@ -18,6 +19,8 @@ def quiz():
         try:
             db.session.add(new_answer)
             db.session.commit()
+            pred = engine.prediction(answer_choices)
+            pred.predict()
             return redirect(url_for('result'))
         except:
             print("Error pushing to database.")

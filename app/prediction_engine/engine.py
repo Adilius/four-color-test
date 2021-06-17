@@ -3,6 +3,15 @@ import enum
 answersheet = [
     {"1": "green", "2": "blue", "3": "red", "4": "yellow"},
     {"1": "green", "2": "blue", "3": "red", "4": "yellow"},
+    {"1": "green", "2": "blue", "3": "red", "4": "yellow"},
+    {"1": "green", "2": "blue", "3": "red", "4": "yellow"},
+    {"1": "green", "2": "blue", "3": "red", "4": "yellow"},
+    {"1": "green", "2": "blue", "3": "red", "4": "yellow"},
+    {"1": "green", "2": "blue", "3": "red", "4": "yellow"},
+    {"1": "green", "2": "blue", "3": "red", "4": "yellow"},
+    {"1": "green", "2": "blue", "3": "red", "4": "yellow"},
+    {"1": "green", "2": "blue", "3": "red", "4": "yellow"},
+    {"1": "green", "2": "blue", "3": "red", "4": "yellow"},
     {"1": "green", "2": "blue", "3": "red", "4": "yellow"}
 ]
 

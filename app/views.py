@@ -35,5 +35,6 @@ def result():
     return render_template('result.html', current_choices=current_choices, answers=answers)
 
 @app.errorhandler(404)
-def error_404(e):
+def error_404(error):
+    print(error)
     return render_template('404.html'), 404

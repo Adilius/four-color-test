@@ -14,3 +14,5 @@ When done running examples code, exit the virtual enviroment using: `deactivate`
 ## Run
 
 `python run.py`
+
+![image](https://user-images.githubusercontent.com/43440295/122429421-11296600-cf93-11eb-8e76-2af911b30875.png)

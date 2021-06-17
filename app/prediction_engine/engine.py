@@ -13,14 +13,15 @@ class prediction():
         self.counter = {
         "green": 0, "blue": 0, "red": 0, "yellow": 0        # Counter for each type
     }
-
-    '''
-    Needs to correspond to question asked in quiz.html
-    '''
-    def predict(self):
-        for count, choice in enumerate(self.choices):
-            print("Count:",count, "  choice:",choice)
-            print("Answersheet:", answersheet[count].get(choice))
+        for count, choice in enumerate(self.choices):       # Count each color type
             self.counter[answersheet[count].get(choice)] += 1
         print(self.counter)
+
+    def predict(self):
+        highest_counts = max(self.counter.values())
+        highest_counters = [k for k,v in self.counter.items() if v == highest_counts]
+
+        print(highest_counters)
+        pass
+        
         

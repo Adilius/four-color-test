@@ -10,3 +10,7 @@ Activate the virtual enviroment: `venv\Scripts\activate.ps1`
 Install dependencies again: `pip install -r requirements.txt`
 
 When done running examples code, exit the virtual enviroment using: `deactivate`
+
+## Run
+
+`python run.py`

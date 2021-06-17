@@ -1,17 +1,6 @@
-from flask import Flask, render_template, url_for, request, redirect, jsonify
-from flask_sqlalchemy import SQLAlchemy
-
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-db = SQLAlchemy(app)
-
-class Answer(db.Model):
-    answer_id = db.Column(db.Integer, primary_key=True)
-    answer_ip = db.Column(db.String(15), nullable=False)
-    answer_choices = db.Column(db.PickleType, nullable=False)
-
-    def __repr__(self):
-        return "<Answer(Id='%s', Ip='%s', Choices='%s')>'" % (self.answer_id, self.answer_ip, self.answer_choices)
+from flask import Flask, render_template, url_for, request, redirect
+from app import app, db
+from app.models import Answer
 
 @app.route('/')
 def index():
@@ -41,7 +30,3 @@ def quiz():
 def result():
     answers = Answer.query.order_by(Answer.answer_id).all()
     return render_template('result.html', answers=answers)
-
-if __name__ == "__main__":
-    db.create_all()
-    app.run(debug=True)

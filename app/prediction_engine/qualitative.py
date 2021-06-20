@@ -12,10 +12,7 @@ answersheet = [
 ]
 
 def predict(choices):
-    choices = choices
-    counter = {
-    "green": 0, "blue": 0, "red": 0, "yellow": 0        # Counter for each type
-}
+    counter = { "green": 0, "blue": 0, "red": 0, "yellow": 0 }       # Counter for each type
     for count, choice in enumerate(choices):       # Count each color type
         counter[answersheet[count].get(choice)] += 1
 
@@ -23,8 +20,3 @@ def predict(choices):
     highest_counters = [k for k,v in counter.items() if v == highest_counts]
 
     return highest_counters, counter
-    #return highest_counts + "\n" + highest_counters
-
-    print(highest_counters)
-    print(counter)
-        

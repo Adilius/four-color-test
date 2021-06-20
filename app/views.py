@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, request, redirect, session
 from app import app, db
 from app.models import Answer
-from app.prediction_engine import engine
+from app.prediction_engine import qualitative
 
 @app.route('/')
 def index():
@@ -29,10 +29,9 @@ def quiz():
 @app.route('/result')
 def result():
     current_choices = session['answer_choices']
-    pred = engine.prediction(current_choices)
-    pred.predict()
+    prediction, counters = qualitative.predict(current_choices)
     answers = Answer.query.order_by(Answer.answer_id).all()
-    return render_template('result.html', current_choices=current_choices, answers=answers)
+    return render_template('result.html', prediction=prediction, counters=counters, answers=answers)
 
 @app.errorhandler(404)
 def error_404(error):

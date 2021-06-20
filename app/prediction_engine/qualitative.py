@@ -11,20 +11,20 @@ answersheet = [
     {"1": "red", "2": "green", "3": "yellow", "4": "blue"} #10
 ]
 
-class prediction():
+def predict(choices):
+    choices = choices
+    counter = {
+    "green": 0, "blue": 0, "red": 0, "yellow": 0        # Counter for each type
+}
+    for count, choice in enumerate(choices):       # Count each color type
+        counter[answersheet[count].get(choice)] += 1
 
-    def __init__(self, choices):
-        self.choices = choices
-        self.counter = {
-        "green": 0, "blue": 0, "red": 0, "yellow": 0        # Counter for each type
-    }
-        for count, choice in enumerate(self.choices):       # Count each color type
-            self.counter[answersheet[count].get(choice)] += 1
-        print(self.counter)
+    highest_counts = max(counter.values())
+    highest_counters = [k for k,v in counter.items() if v == highest_counts]
 
-    def predict(self):
-        highest_counts = max(self.counter.values())
-        highest_counters = [k for k,v in self.counter.items() if v == highest_counts]
+    return highest_counters, counter
+    #return highest_counts + "\n" + highest_counters
 
-        print(highest_counters)
+    print(highest_counters)
+    print(counter)
         

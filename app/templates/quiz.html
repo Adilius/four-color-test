@@ -2,6 +2,7 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}">
+<title> Four color quiz</title>
 {% endblock %}
 
 {% block body %}
@@ -26,7 +27,7 @@
 <!-- Testing code -->
 <div class="container my-5">
     <div>
-        <div class="h5"><b>Which role do you take in a project?</b></div>
+        <p class="h5 options-title">Which role do you take in a project?</p>
         <div class="pt-3 options">
             <label class="options">Driving the project
                 <input type="radio" required name="role" value="1"> <span class="checkmark"></span> </label>
@@ -41,7 +42,7 @@
 </div>
 <div class="container my-5">
     <div>
-        <div class="h5"><b>What would your friends describe you as?</b></div>
+        <p class="h5 options-title">What would your friends describe you as?</p>
         <div class="pt-3 options">
             <label class="options">Likes company and comes up with fun stuff
                 <input type="radio" required name="friends" value="1"> <span class="checkmark"></span> </label>
@@ -56,7 +57,7 @@
 </div>
 <div class="container my-5">
     <div>
-        <div class="h5"><b>How do you speak in front of a group?</b></div>
+        <p class="h5 options-title">How do you speak in front of a group?</p>
         <div class="pt-3 options">
             <label class="options">I gesture and move a lot
                 <input type="radio" required name="speak" value="1"> <span class="checkmark"></span> </label>
@@ -71,7 +72,7 @@
 </div>
 <div class="container my-5">
     <div>
-        <div class="h5"><b>What is most important for you in a work enviroment?</b></div>
+        <p class="h5 options-title">What is most important for you in a work enviroment?</p>
         <div class="pt-3 options">
             <label class="options">To help my co-workers and create an inovating enviroment
                 <input type="radio" required name="work" value="1"> <span class="checkmark"></span> </label>
@@ -87,7 +88,7 @@
 
 <div class="container my-5">
     <div>
-        <div class="h5"><b>What would you do at an event with many people you have yet to met?</b></div>
+        <p class="h5 options-title">What would you do at an event with many people you have yet to met?</p>
         <div class="pt-3 options">
             <label class="options">Find the group of people with whom I am comfortable with
                 <input type="radio" required name="event" value="1"> <span class="checkmark"></span> </label>
@@ -103,7 +104,7 @@
 
 <div class="container my-5">
     <div>
-        <div class="h5"><b>What type of activity do you enjoy the most?</b></div>
+        <p class="h5 options-title">What type of activity do you enjoy the most?</p>
         <div class="pt-3 options">
             <label class="options">Comfortable and predictable tasks that benifit everyone
                 <input type="radio" required name="activity" value="1"> <span class="checkmark"></span> </label>
@@ -119,7 +120,7 @@
 
 <div class="container my-5">
     <div>
-        <div class="h5"><b>What do you see your self the most as?</b></div>
+        <p class="h5 options-title">What do you see your self the most as?</p>
         <div class="pt-3 options">
             <label class="options">Forthright, goal-oriented, and motivating
                 <input type="radio" required name="self" value="1"> <span class="checkmark"></span> </label>
@@ -135,7 +136,7 @@
 
 <div class="container my-5">
     <div>
-        <div class="h5"><b>What are you most comfortable with?</b></div>
+        <p class="h5 options-title">What are you most comfortable with?</p>
         <div class="pt-3 options">
             <label class="options">Talking with many people and motivating others
                 <input type="radio" required name="comfortable" value="1"> <span class="checkmark"></span> </label>
@@ -151,7 +152,7 @@
 
 <div class="container my-5">
     <div>
-        <div class="h5"><b>How do you relate to friendship?</b></div>
+        <p class="h5 options-title">How do you relate to friendship?</p>
         <div class="pt-3 options">
             <label class="options">I prefer to have an abundance of close friends and acquaintances
                 <input type="radio" required name="friendship" value="1"> <span class="checkmark"></span> </label>
@@ -167,7 +168,7 @@
 
 <div class="container my-5">
     <div>
-        <div class="h5"><b>Which of the following do you mostly associate with the most?</b></div>
+        <p class="h5 options-title">Which of the following do you mostly associate with the most?</p>
         <div class="pt-3 options">
             <label class="options">I truly appreciate taking on challenging and rapid issues. My decision-taking process consists for the most part on rapidly finding an effective and logical solution
                 <input type="radio" required name="core" value="1"> <span class="checkmark"></span> </label>

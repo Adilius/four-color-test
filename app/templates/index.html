@@ -2,26 +2,21 @@
 
 {% block head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <title> Four color test</title>
 {% endblock %}
 
 {% block body %}
 <div class="site-wrapper">
-
     <div class="site-wrapper-inner">
-
       <div class="container">
-
         <div class="inner cover">
-          <h1 class="cover-heading">Four color personality test</h1>
-          <p class="lead">Personality test driven by machine learning and data. </p>
+          <h1 class="cover-heading">Four Color Personality Quiz</h1>
+          <p class="lead">Personality quiz driven by machine learning and data. This quiz is not backend by science and is just for entertainment.</p>
           <p class="lead">
             <a href="{{url_for('quiz') }}" class="btn btn-lg btn-default">Do the quiz</a>
           </p>
         </div>
-
       </div>
-
     </div>
-
   </div>
 {% endblock %}

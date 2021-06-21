@@ -2,6 +2,7 @@ from flask import Flask, render_template, url_for, request, redirect, session
 from app import app, db
 from app.models import Answer
 from app.prediction_engine import qualitative
+from app.identifier_engine import request_fingerprint
 
 @app.route('/')
 def index():
@@ -10,6 +11,7 @@ def index():
 @app.route('/quiz', methods=['GET', 'POST'])
 def quiz():
     if request.method == 'POST':
+        request_fingerprint.printAddr(request)
         answer_ip = request.remote_addr
         answer_choices = list(request.form.to_dict().values())
         session['answer_choices'] = answer_choices

@@ -14,17 +14,15 @@
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Ip</th>
+        <th scope="col">Fingerprint</th>
         <th scope="col">Choices</th>
       </tr>
     </thead>
     <tbody>
     {% for answer in answers %}
       <tr>
-        <td>{{ answer.answer_id}}</td>
-        <td>{{ answer.answer_ip}}</td>
-        <td>{{ answer.answer_choices}}</td>
+        <td>{{ answer.fingerprint}}</td>
+        <td>{{ answer.choices}}</td>
       </tr>
       {% endfor %}
     </tbody>

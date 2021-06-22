@@ -11,15 +11,17 @@ def index():
 @app.route('/quiz', methods=['GET', 'POST'])
 def quiz():
     if request.method == 'POST':
-        fingerprint.printAddr(request)
-        answer_ip = request.remote_addr
         print(list(request.form.to_dict().values()))
-        answer_choices = list(request.form.to_dict().values())[:-1]
-        session['answer_choices'] = answer_choices
-        new_answer = Answer(answer_ip=answer_ip, answer_choices=answer_choices)
+        choices = list(request.form.to_dict().values())[:-1]
+        user_fingerprint = list(request.form.to_dict().values())[-1:][0]
+        user_fingerprint = fingerprint.create_fingerprint(request, user_fingerprint)
+        print("choices:", choices)
+        print("user_fingerprint:", user_fingerprint)
+        session['choices'] = choices
+        answer = Answer(fingerprint=user_fingerprint, choices=choices)
 
         try:
-            db.session.add(new_answer)
+            db.session.merge(answer)
             db.session.commit()
             return redirect(url_for('result'))
         except:
@@ -31,9 +33,9 @@ def quiz():
 
 @app.route('/result')
 def result():
-    current_choices = session['answer_choices']
+    current_choices = session['choices']
     prediction, counters = qualitative.predict(current_choices)
-    answers = Answer.query.order_by(Answer.answer_id).all()
+    answers = Answer.query.order_by(Answer.fingerprint).all()
     return render_template('result.html', prediction=prediction, counters=counters, answers=answers)
 
 @app.errorhandler(404)

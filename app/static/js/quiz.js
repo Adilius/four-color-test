@@ -1,11 +1,6 @@
-
-var visitorId = undefined
-
 window.onload = function initFingerprintJS() {
     // Initialize an agent at application startup.
     fpPromise = FingerprintJS.load()
-    console.log("FingerprintJS initialized")
-
 
     var visitorId;
     // Get the visitor identifier when you need it.
@@ -17,11 +12,9 @@ window.onload = function initFingerprintJS() {
         console.log(visitorId)
         add_payload(visitorId)
     })
-
 }
 
 function add_payload(visitorId){
-    console.log("Add Payload")
     quiz_element = document.getElementById('quiz')
     hiddenInput = document.createElement('input');
     hiddenInput.type = 'hidden';

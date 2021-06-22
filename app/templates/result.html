@@ -8,10 +8,15 @@
 <div class="container">
   <p>Prediction: {{ prediction}}</p>
   <p>Count: {{ counters}}</p>
+  <p>Fingerprint: {{user_fingerprint}}</p>
 </div>
 
 <div class="container">
-<table class="table">
+  <img src="data:image/png;base64, {{plot_url}}">
+</div>
+
+<div class="container">
+  <table class="table">
     <thead>
       <tr>
         <th scope="col">Fingerprint</th>
@@ -19,7 +24,7 @@
       </tr>
     </thead>
     <tbody>
-    {% for answer in answers %}
+      {% for answer in answers %}
       <tr>
         <td>{{ answer.fingerprint}}</td>
         <td>{{ answer.choices}}</td>

@@ -1,3 +1,7 @@
+import matplotlib.pyplot as plt
+import io
+import base64
+
 answersheet = [
     {"1": "red", "2": "green", "3": "yellow", "4": "blue"}, #1
     {"1": "yellow", "2": "blue", "3": "red", "4": "green"}, #2
@@ -11,12 +15,62 @@ answersheet = [
     {"1": "red", "2": "green", "3": "yellow", "4": "blue"} #10
 ]
 
-def predict(choices):
+def getCounts(choices):
     counter = { "green": 0, "blue": 0, "red": 0, "yellow": 0 }       # Counter for each type
     for count, choice in enumerate(choices):       # Count each color type
         counter[answersheet[count].get(choice)] += 1
+    return counter
 
-    highest_counts = max(counter.values())
-    highest_counters = [k for k,v in counter.items() if v == highest_counts]
+def createPlot(choices):
+    counter = getCounts(choices)
+    img = io.BytesIO()
 
-    return highest_counters, counter
+    fig,ax = plt.subplots(figsize=(5,5))
+    ax.set_xlim(-10,10)
+    ax.set_ylim(-10,10)
+
+    plt.xticks([])
+    plt.yticks([])
+
+    ax.axvline(0,color = 'black',linestyle='solid',linewidth=1)
+    ax.axhline(0,color = 'black',linestyle='solid',linewidth=1)
+
+    ax.fill_between([-10, 0],-10,0,alpha=0.3, color='#00FF00')  # green
+    ax.fill_between([0, 10], -10, 0, alpha=0.3, color='#FFFF00')  # yellow
+    ax.fill_between([-10, 0], 0, 10, alpha=0.3, color='#0000FF')  # blue
+    ax.fill_between([0, 10], 0, 10, alpha=0.3, color='#FF0000')  # red
+
+    x = -counter.get('green')-counter.get('blue')+counter.get('red')+counter.get('yellow')
+    y = -counter.get('green')-counter.get('yellow')+counter.get('blue')+counter.get('red')
+    plt.plot(x, y, marker='o', markersize=5, color='black')
+
+    plt.plot()
+    plt.savefig(img, format='png')
+
+    plot_url = base64.b64encode(img.getvalue()).decode()
+    return plot_url
+
+def predict(choices):
+    counter = getCounts(choices)
+
+    colors = []
+
+    intra_extra = -counter.get('green')-counter.get('blue')+counter.get('red')+counter.get('yellow')
+    people_task = -counter.get('green')-counter.get('yellow')+counter.get('blue')+counter.get('red')
+
+    if intra_extra < 0 and people_task < 0:
+        colors.append('green')
+    if intra_extra < 0 and people_task == 0:
+        colors.append('green')
+        colors.append('blue')
+    if intra_extra < 0 and people_task > 0:
+        colors.append('blue')
+    if intra_extra > 0 and people_task > 0:
+        colors.append('red')
+    if intra_extra > 0 and people_task == 0:
+        colors.append('red')
+        colors.append('yellow')
+    if intra_extra > 0 and people_task < 0:
+        colors.append('yellow')
+
+    return colors, counter

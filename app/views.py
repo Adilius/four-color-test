@@ -18,6 +18,7 @@ def quiz():
         print("choices:", choices)
         print("user_fingerprint:", user_fingerprint)
         session['choices'] = choices
+        session['user_fingerprint'] = user_fingerprint
         answer = Answer(fingerprint=user_fingerprint, choices=choices)
 
         try:
@@ -34,9 +35,11 @@ def quiz():
 @app.route('/result')
 def result():
     current_choices = session['choices']
+    user_fingerprint = session['user_fingerprint']
     prediction, counters = qualitative.predict(current_choices)
+    plot_url = qualitative.createPlot(current_choices)
     answers = Answer.query.order_by(Answer.fingerprint).all()
-    return render_template('result.html', prediction=prediction, counters=counters, answers=answers)
+    return render_template('result.html', prediction=prediction, counters=counters, user_fingerprint=user_fingerprint, answers=answers, plot_url=plot_url)
 
 @app.errorhandler(404)
 def error_404(error):

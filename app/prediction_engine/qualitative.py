@@ -3,16 +3,16 @@ import io
 import base64
 
 answersheet = [
-    {"1": "red", "2": "green", "3": "yellow", "4": "blue"}, #1
-    {"1": "yellow", "2": "blue", "3": "red", "4": "green"}, #2
-    {"1": "yellow", "2": "green", "3": "red", "4": "blue"}, #3
-    {"1": "yellow", "2": "red", "3": "green", "4": "blue"}, #4
-    {"1": "green", "2": "blue", "3": "red", "4": "yellow"}, #5
-    {"1": "green", "2": "yellow", "3": "blue", "4": "red"}, #6
-    {"1": "red", "2": "green", "3": "blue", "4": "yellow"}, #7
-    {"1": "yellow", "2": "green", "3": "blue", "4": "red"}, #8
-    {"1": "yellow", "2": "green", "3": "blue", "4": "red"}, #9
-    {"1": "red", "2": "green", "3": "yellow", "4": "blue"} #10
+    {1: "red", 2: "green", 3: "yellow", 4: "blue"}, #1
+    {1: "yellow", 2: "blue", 3: "red", 4: "green"}, #2
+    {1: "yellow", 2: "green", 3: "red", 4: "blue"}, #3
+    {1: "yellow", 2: "red", 3: "green", 4: "blue"}, #4
+    {1: "green", 2: "blue", 3: "red", 4: "yellow"}, #5
+    {1: "green", 2: "yellow", 3: "blue", 4: "red"}, #6
+    {1: "red", 2: "green", 3: "blue", 4: "yellow"}, #7
+    {1: "yellow", 2: "green", 3: "blue", 4: "red"}, #8
+    {1: "yellow", 2: "green", 3: "blue", 4: "red"}, #9
+    {1: "red", 2: "green", 3: "yellow", 4: "blue"} #10
 ]
 
 def getCounts(choices):

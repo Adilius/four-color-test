@@ -4,6 +4,8 @@ from app.models import Answer
 from app.prediction_engine import qualitative
 from app.identifier_engine import fingerprint
 
+import random
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -11,12 +13,10 @@ def index():
 @app.route('/quiz', methods=['GET', 'POST'])
 def quiz():
     if request.method == 'POST':
-        print(list(request.form.to_dict().values()))
-        choices = list(request.form.to_dict().values())[:-1]
-        user_fingerprint = list(request.form.to_dict().values())[-1:][0]
-        user_fingerprint = fingerprint.create_fingerprint(request, user_fingerprint)
-        print("choices:", choices)
-        print("user_fingerprint:", user_fingerprint)
+        choices = list(map(int, list(request.form.to_dict().values())[:-1]))
+        web_fingerprint = list(request.form.to_dict().values())[-1:][0]
+        user_fingerprint = fingerprint.create_fingerprint(request, web_fingerprint)
+        print(choices)
         session['choices'] = choices
         session['user_fingerprint'] = user_fingerprint
         answer = Answer(fingerprint=user_fingerprint, choices=choices)

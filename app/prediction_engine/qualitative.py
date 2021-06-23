@@ -45,7 +45,10 @@ def createPlot(choices):
     plt.plot(x, y, marker='o', markersize=5, color='black')
 
     plt.plot()
-    plt.savefig(img, format='png')
+    ax.axes.get_xaxis().set_visible(False)
+    ax.axes.get_yaxis().set_visible(False)
+    ax.set_frame_on(False)
+    plt.savefig(img, format='png', bbox_inches='tight', pad_inches = 0)
 
     plot_url = base64.b64encode(img.getvalue()).decode()
     return plot_url
@@ -53,10 +56,10 @@ def createPlot(choices):
 def predict(choices):
     counter = getCounts(choices)
 
-    colors = []
-
     intra_extra = -counter.get('green')-counter.get('blue')+counter.get('red')+counter.get('yellow')
     people_task = -counter.get('green')-counter.get('yellow')+counter.get('blue')+counter.get('red')
+
+    colors = []
 
     if intra_extra < 0 and people_task < 0:
         colors.append('green')
@@ -65,6 +68,9 @@ def predict(choices):
         colors.append('blue')
     if intra_extra < 0 and people_task > 0:
         colors.append('blue')
+    if intra_extra == 0 and people_task > 0:
+        colors.append('blue')
+        colors.append('red')
     if intra_extra > 0 and people_task > 0:
         colors.append('red')
     if intra_extra > 0 and people_task == 0:
@@ -72,5 +78,8 @@ def predict(choices):
         colors.append('yellow')
     if intra_extra > 0 and people_task < 0:
         colors.append('yellow')
+    if intra_extra == 0 and people_task < 0:
+        colors.append('yellow')
+        colors.append('green')
 
     return colors, counter

@@ -29,13 +29,38 @@
 <div class="site-wrapper">
     <div class="site-wrapper-inner">
       <div class="container">
-        <img src="{{url_for('static', filename='images/cover_image_transparent.png')}}">
+        <img src="{{url_for('static', filename='images/cover_image_transparent.png')}}" style="height: 50%;width: 50%;">
         <div class="inner cover">
           <h1 class="cover-heading">Most Quizzes That Determine Personality Abide By Man-Made Rules. Take One That Is Entirely Data-Driven.</h1>
-          <p class="lead">Dynamically determine personality using machine learning algorithm based on current Internet data.</p>
+          <p class="lead">Dynamically determine personality using machine learning algorithm based on historic Internet data.</p>
           <br>
-          <p>What kind of personality do you encompass, and what can it tell about yourself? These questions have pioneered countless online personality quizzes. 
-            But these quizzes are mere meretricious, built on simple rules. You can take a presonality quiz backed by data.</p>
+          <div class="d-flex justify-content-center">
+            <p class="text">
+              What kind of personality do you encompass, and what can it tell about yourself?
+              These questions have pioneered countless online personality quizzes. 
+              But these quizzes are mere meretricious, built on simple rules.
+              Wouldn't you rather take a presonality quiz built on data using machine learning algorithms.
+              <br>
+              <br>
+              This quiz does not work like most online quizes where your choices increment some counter which at the
+              goes through a bunch of conditional statements or arithmetic clauses to return your personality type, both of which
+              is written by someone unknowlingly of how it will actually perform. Here is how this quiz is different. Each answer is stored
+              for future references togheter with a unqiue but in-reversable SHA-256 hash hex digest used for combating duplicate entries.
+              We couldn't reverse it even if we wanted to. This data is very important to us, since it is used for the prediction engine that 
+              determines your personality type. The engine works by taking your answers and comparing it to all the other answers using the
+              k-nearest-neighbors algorithm, a very popular classification method, and at the end returns what type it thinks you are closest to.
+              The beauty of this algorithm is that for example the world is more extroverted than we thought, the algorithm will accomodate that and
+              not just return a lot of extroverted types as normal quizes would. This is because the engine uses something called instance-based learning
+              which compares new personality types to historic ones that has been saved in database.
+              <br>
+              <br>
+            </p>
+            </div>
+            <div class="d-flex justify-content-center">
+            <p>
+              But enough computer mumbo and time to find out your personality type!
+            </p>
+          </div>
           <p class="lead">
             <a href="{{url_for('quiz') }}" class="btn btn-lg btn-default">Do the quiz</a>
           </p>

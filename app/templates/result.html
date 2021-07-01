@@ -6,6 +6,18 @@
 
 {% block body %}
 <div class="container">
+  {# {% if sort(['yellow','blue','green','red']) == sort(prediction) %} 
+  <p>EVERYTHING</p> 
+
+  {% elif 'green' in prediction %}
+  <p>green</p>
+
+  {% elif 'blue' in prediction %}
+  <p>blue</p>
+
+  {% elif 'red' in prediction %}
+  <p>red</p>
+  {% endif %} #}
   <p>Prediction: {{ prediction}}</p>
   <p>Count: {{ counters}}</p>
   <p>Fingerprint: {{user_fingerprint}}</p>

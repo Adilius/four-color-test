@@ -81,5 +81,10 @@ def predict(choices):
     if intra_extra == 0 and people_task < 0:
         colors.append('yellow')
         colors.append('green')
+    if intra_extra == 0 and people_task == 0:
+        colors.append('yellow')
+        colors.append('green')
+        colors.append('blue')
+        colors.append('red')
 
     return colors, counter

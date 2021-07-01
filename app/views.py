@@ -16,7 +16,6 @@ def quiz():
         choices = list(map(int, list(request.form.to_dict().values())[:-1]))
         web_fingerprint = list(request.form.to_dict().values())[-1:][0]
         user_fingerprint = fingerprint.create_fingerprint(request, web_fingerprint)
-        print(choices)
         session['choices'] = choices
         session['user_fingerprint'] = user_fingerprint
         answer = Answer(fingerprint=user_fingerprint, choices=choices)

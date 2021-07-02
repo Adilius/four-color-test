@@ -15,10 +15,10 @@ def quiz():
     if request.method == 'POST':
         choices = list(map(int, list(request.form.to_dict().values())[:-1]))
         web_fingerprint = list(request.form.to_dict().values())[-1:][0]
-        user_fingerprint = fingerprint.create_fingerprint(request, web_fingerprint)
+        webhash, httphash, combinedhash = fingerprint.create_fingerprint(request, web_fingerprint)
         session['choices'] = choices
-        session['user_fingerprint'] = user_fingerprint
-        answer = Answer(fingerprint=user_fingerprint, choices=choices)
+        session['user_hases'] = webhash, httphash, combinedhash
+        answer = Answer(webhash=webhash, httphash=httphash, combinedhash=combinedhash, choices=choices)
 
         try:
             db.session.merge(answer)
@@ -34,11 +34,11 @@ def quiz():
 @app.route('/result')
 def result():
     current_choices = session['choices']
-    user_fingerprint = session['user_fingerprint']
+    webhash, httphash, combinedhash = session['user_hases']
     prediction, counters = qualitative.predict(current_choices)
     plot_url = qualitative.createPlot(current_choices)
-    answers = Answer.query.order_by(Answer.fingerprint).all()
-    return render_template('result.html', prediction=prediction, counters=counters, user_fingerprint=user_fingerprint, answers=answers, plot_url=plot_url)
+    answers = Answer.query.order_by(Answer.webhash).all()
+    return render_template('result.html', prediction=prediction, counters=counters, user_fingerprint=[webhash, httphash, combinedhash], answers=answers, plot_url=plot_url)
 
 @app.errorhandler(404)
 def error_404(error):

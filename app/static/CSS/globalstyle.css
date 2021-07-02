@@ -1,6 +1,69 @@
+/* COLOURS */
+/* DARK 232741 */
+/* GREY  d9d9d9*/
+/* WHITE f0f0f0*/
+/* GREEN 00cc88*/
+/* GREEN FOCUS #00ffaa */
+
+/* UNIVERSAL */
+
 html, body {
-  background-color: #333;
   height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+  overflow: auto;
+  background: #232741;
+}
+
+.border-green{
+  border-color: #00cc88 !important;
+}
+
+.dark-bg {
+  background-color: #232741;
+}
+
+.white-text {
+  color: #f0f0f0;
+}
+
+.icon-padding {
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.fancy-font {
+  font-family: 'Roboto Slab', serif;
+}
+
+h1 {
+  font-family: "Chronicle Display Bold",Georgia,serif;
+}
+
+.h4 {
+  font-family: Gotham,Helvetica,Arial,sans-serif;
+}
+
+p {
+  font-size: 1.15rem;
+  font-weight: 400;
+  font-family: Whitney,Helvetica,Arial,sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: #00cc88;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #00ffaa;
+  transition: 0.3s;
+  text-decoration: none;
 }
 
 p, h1, h2, h3, h4, h5, h6, th, td, label {
@@ -11,7 +74,7 @@ p, h1, h2, h3, h4, h5, h6, th, td, label {
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {
-  color: #333;
+  color: #232741;
   text-shadow: none; /* Prevent inheritence from `body` */
   background-color: #fff;
   border: 1px solid #fff;

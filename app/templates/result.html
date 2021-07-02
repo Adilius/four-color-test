@@ -6,21 +6,46 @@
 
 {% block body %}
 <div class="container">
-  {# {% if sort(['yellow','blue','green','red']) == sort(prediction) %} 
-  <p>EVERYTHING</p> 
+  <div class="row">
+    <div class="col">
+    <p>Your personality is<p><h1>
+      {% if prediction == 1 %}
+      a jack of all trades
 
-  {% elif 'green' in prediction %}
-  <p>green</p>
+      {% elif prediction == 2 %}
+      red and yellow
+      {% elif prediction == 3 %}
+      red
+      <img src="{{url_for('static', filename='images/red.png')}}" style="height: 400px; width: 200px;">
 
-  {% elif 'blue' in prediction %}
-  <p>blue</p>
+      {% elif prediction == 4 %}
+      red and blue
 
-  {% elif 'red' in prediction %}
-  <p>red</p>
-  {% endif %} #}
-  <p>Prediction: {{ prediction}}</p>
-  <p>Count: {{ counters}}</p>
-  <p>User hashes: {{user_fingerprint}}</p>
+      {% elif prediction == 5 %}
+      blue
+      <img src="{{url_for('static', filename='images/blue.png')}}" style="height: 400px; width: 200px;">
+
+      {% elif prediction == 6 %}
+      blue and green
+
+      {% elif prediction == 7 %}
+      green
+      <img src="{{url_for('static', filename='images/green.png')}}" style="height: 400px;width: 200px;">
+
+      {% elif prediction == 8 %}
+      green and yellow
+
+      {% elif prediction == 9 %}
+      yellow
+      <img src="{{url_for('static', filename='images/yellow.png')}}" style="height: 400px;width: 200px;">
+
+      {% endif %}
+    </h1>
+  </div>
+  <div class="col">
+  </div>
+
+  </div>
 </div>
 
 <div class="container">
@@ -28,6 +53,8 @@
 </div>
 
 <div class="container">
+  <p>Count: {{ counters}}</p>
+  <p>User hashes: {{user_fingerprint}}</p>
   <table class="table">
     <thead>
       <tr>

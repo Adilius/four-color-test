@@ -4,8 +4,6 @@ from app.models import Answer
 from app.prediction_engine import qualitative
 from app.identifier_engine import fingerprint
 
-import random
-
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -35,10 +33,15 @@ def quiz():
 def result():
     current_choices = session['choices']
     webhash, httphash, combinedhash = session['user_hases']
-    prediction, counters = qualitative.predict(current_choices)
+    #prediction, counters = qualitative.predict(current_choices)
+    prediction, counters = qualitative.predictNumber(current_choices)
     plot_url = qualitative.createPlot(current_choices)
     answers = Answer.query.order_by(Answer.webhash).all()
     return render_template('result.html', prediction=prediction, counters=counters, user_fingerprint=[webhash, httphash, combinedhash], answers=answers, plot_url=plot_url)
+
+@app.route('/personalities')
+def personalities():
+    return render_template('personalities.html')
 
 @app.errorhandler(404)
 def error_404(error):

@@ -33,7 +33,6 @@ def quiz():
 def result():
     current_choices = session['choices']
     webhash, httphash, combinedhash = session['user_hases']
-    #prediction, counters = qualitative.predict(current_choices)
     prediction, counters = qualitative.predictNumber(current_choices)
     plot_url = qualitative.createPlot(current_choices)
     answers = Answer.query.order_by(Answer.webhash).all()
@@ -42,6 +41,10 @@ def result():
 @app.route('/personalities')
 def personalities():
     return render_template('personalities.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 @app.errorhandler(404)
 def error_404(error):

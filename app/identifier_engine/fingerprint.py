@@ -9,7 +9,6 @@ def create_fingerprint(request, webhash = ""):
     user_agent = request.user_agent.string
     mimetype = request.mimetype
     accept_encodings = request.accept_encodings
-    accept_languages = request.accept_languages
     accept_mimetypes = request.accept_mimetypes
     remote_addr = request.remote_addr
 
@@ -17,12 +16,11 @@ def create_fingerprint(request, webhash = ""):
     print("user_agent:", user_agent)
     print("mimetype:", mimetype)
     print("Accept_encodings:", accept_encodings)
-    print("Accept_languages:", accept_languages)
     print("Accept_mimetypes:", accept_mimetypes)
     print("Remote_addr:", remote_addr)
 
     # Create hash using HTTP request header
-    request_long = str(user_agent) + str(mimetype) + str(accept_encodings) + str(accept_languages) + str(accept_mimetypes) + str(remote_addr)
+    request_long = str(user_agent) + str(mimetype) + str(accept_encodings) + str(accept_mimetypes) + str(remote_addr)
     hash_module.update(request_long.encode('utf-8'))
     HTTP_hash = hash_module.hexdigest()
 

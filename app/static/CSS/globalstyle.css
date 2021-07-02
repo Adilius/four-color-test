@@ -1,20 +1,11 @@
 /* COLOURS */
-/* DARK 232741 */
-/* GREY  d9d9d9*/
-/* WHITE f0f0f0*/
-/* GREEN 00cc88*/
-/* GREEN FOCUS #00ffaa */
-
-/* UNIVERSAL */
+/* DARK   232741 */
+/* GREY   d9d9d9*/
+/* WHITE  f0f0f0*/
+/* GREEN  00cc88*/
+/* GREEN FOCUS  00ffaa */
 
 html, body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  left: 0;
-  top: 0;
-  overflow: auto;
   background: #232741;
 }
 
@@ -37,19 +28,11 @@ p, h1, h2, h3, h4, h5, h6, th, td, label {
   color: #fff;
 }
 
-a:hover,
-a:focus {
-  color: red;
-  transition: 0.3s;
-  text-decoration: none;
-}
-
-/* Custom default button */
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {
   color: #232741;
-  text-shadow: none; /* Prevent inheritence from `body` */
+  text-shadow: none;
   background-color: #fff;
   border: 1px solid #fff;
   padding: 10px 20px;

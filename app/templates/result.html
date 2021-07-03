@@ -16,28 +16,28 @@
       red and yellow
       {% elif prediction == 3 %}
       red
-      <img src="{{url_for('static', filename='images/red.png')}}" style="height: 400px; width: 200px;">
+      <img src="{{url_for('static', filename='images/red.png')}}">
 
       {% elif prediction == 4 %}
       red and blue
 
       {% elif prediction == 5 %}
       blue
-      <img src="{{url_for('static', filename='images/blue.png')}}" style="height: 400px; width: 200px;">
+      <img src="{{url_for('static', filename='images/blue.png')}}">
 
       {% elif prediction == 6 %}
       blue and green
 
       {% elif prediction == 7 %}
       green
-      <img src="{{url_for('static', filename='images/green.png')}}" style="height: 400px;width: 200px;">
+      <img src="{{url_for('static', filename='images/green.png')}}">
 
       {% elif prediction == 8 %}
       green and yellow
 
       {% elif prediction == 9 %}
       yellow
-      <img src="{{url_for('static', filename='images/yellow.png')}}" style="height: 400px;width: 200px;">
+      <img src="{{url_for('static', filename='images/yellow.png')}}">
 
       {% endif %}
     </h1>
@@ -55,6 +55,7 @@
 <div class="container">
   <p>Count: {{ counters}}</p>
   <p>User hashes: {{user_fingerprint}}</p>
+  <p>Procentages: {{procentages}}</p>
   <table class="table">
     <thead>
       <tr>

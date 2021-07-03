@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import io
 import base64
+import math
 
 answersheet = [
     {1: "red", 2: "green", 3: "yellow", 4: "blue"}, #1
@@ -53,6 +54,7 @@ def createPlot(choices):
     plt.savefig(img, format='png', bbox_inches='tight', pad_inches = 0)
 
     plot_img = base64.b64encode(img.getvalue()).decode()
+
     return plot_img
 
 # Returns list of predicted personality types
@@ -94,7 +96,6 @@ def predict(choices):
 
 # Returns number instead of list of predicted personality type
 def predictNumber(choices):
-    
     colors, counter = predict(choices)
 
     if set(['green','yellow','blue','red']) == set(colors):
@@ -134,3 +135,47 @@ def predictNumber(choices):
         print('9')
 
     return prediction, counter
+
+# Returns procentage of each color depending on distance to each corner
+def getProcentage(choices):
+    counter = getCounts(choices)
+
+    x = -counter.get('green')-counter.get('blue')+counter.get('red')+counter.get('yellow')
+    y = -counter.get('green')-counter.get('yellow')+counter.get('blue')+counter.get('red')
+
+    green_distance = math.sqrt(pow(x+10, 2) + pow(y+10, 2))
+    green_distance_inversed = 1/green_distance
+    blue_distance = math.sqrt(pow(x+10, 2) + pow(y-10, 2))
+    blue_distance_inversed = 1/blue_distance
+    red_distance = math.sqrt(pow(x-10, 2) + pow(y-10, 2))
+    red_distance_inversed = 1/red_distance
+    yellow_distance = math.sqrt(pow(x-10, 2) + pow(y+10, 2))
+    yellow_distance_inversed = 1/yellow_distance
+    total = green_distance + blue_distance + red_distance + yellow_distance
+    inversed_total = green_distance_inversed + blue_distance_inversed + red_distance_inversed + yellow_distance_inversed
+    green_procentage = int(round((green_distance_inversed/inversed_total)*100))
+    blue_procentage = int(round((blue_distance_inversed/inversed_total)*100))
+    red_procentage = int(round((red_distance_inversed/inversed_total)*100))
+    yellow_procentage = int(round((yellow_distance_inversed/inversed_total)*100))
+
+    print("X:", x, " Y:", y)
+    print("Green distance:", green_distance)
+    print("Green inversed:", green_distance_inversed)
+    print("Green procentage:", green_procentage)
+
+    print("Blue distance:", blue_distance)
+    print("Blue distance inversed:", blue_distance_inversed)
+    print("Blue procentage:", blue_procentage)
+
+    print("Red distance:", red_distance)
+    print("Red distance inversed:", red_distance_inversed)
+    print("Red procentage:", red_procentage)
+
+    print("Yellow distance:", yellow_distance)
+    print("Yellow distance inversed:", yellow_distance_inversed)
+    print("Yellow procentage:", yellow_procentage)
+
+    print("Total:", total)
+    print("Inversed total:", inversed_total)
+
+    return [green_procentage, blue_procentage, red_procentage, yellow_procentage]

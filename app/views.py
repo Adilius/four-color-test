@@ -36,7 +36,8 @@ def result():
     prediction, counters = qualitative.predictNumber(current_choices)
     plot_url = qualitative.createPlot(current_choices)
     answers = Answer.query.order_by(Answer.webhash).all()
-    return render_template('result.html', prediction=prediction, counters=counters, user_fingerprint=[webhash, httphash, combinedhash], answers=answers, plot_url=plot_url)
+    procentages = qualitative.getProcentage(current_choices)
+    return render_template('result.html', prediction=prediction, counters=counters, user_fingerprint=[webhash, httphash, combinedhash], answers=answers, plot_url=plot_url, procentages=procentages)
 
 @app.route('/personalities')
 def personalities():

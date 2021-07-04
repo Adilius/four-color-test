@@ -1,0 +1,17 @@
+samp {
+    margin: auto;
+    background: #000;
+	border: 3px groove #ccc;
+	color: #ccc;
+	display: block;
+	padding: 5px;
+	width: 300px;
+}
+
+.divider {
+    display: block;
+    margin: 50px 0;
+    width: auto;
+    height: 2px;
+    background-color: #00cc88;
+  }

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
 <title> Four color result</title>
 {% endblock %}
 
@@ -10,58 +11,68 @@
     <div class="col py-5 text-center">
       <h1 class="display-6 fw-bold">Your personality type is:</h1>
       <br>
-        {% if prediction == 1 %}
-        <h1 class="display-4 fw-bold">jack of all trades</h1>
-        <img src="{{url_for('static', filename='images/grey.png')}}">
+      {% if prediction == 1 %}
+      <h1 class="display-4 fw-bold">jack of all trades</h1>
+      <img src="{{url_for('static', filename='images/grey.png')}}">
 
-        {% elif prediction == 2 %}
-        <h1 class="display-4 fw-bold">Red & Yellow</h1>
-        <img src="{{url_for('static', filename='images/red.png')}}">
-        <img src="{{url_for('static', filename='images/yellow.png')}}">
+      {% elif prediction == 2 %}
+      <h1 class="display-4 fw-bold">Red & Yellow</h1>
+      <img src="{{url_for('static', filename='images/red.png')}}">
+      <img src="{{url_for('static', filename='images/yellow.png')}}">
 
-        {% elif prediction == 3 %}
-        <h1 class="display-4 fw-bold">Red</h1>
-        <img src="{{url_for('static', filename='images/red.png')}}">
+      {% elif prediction == 3 %}
+      <h1 class="display-4 fw-bold">Red</h1>
+      <img src="{{url_for('static', filename='images/red.png')}}">
 
-        {% elif prediction == 4 %}
-        <h1 class="display-4 fw-bold">Red & Blue</h1>
-        <img src="{{url_for('static', filename='images/red.png')}}">
-        <img src="{{url_for('static', filename='images/blue.png')}}">
+      {% elif prediction == 4 %}
+      <h1 class="display-4 fw-bold">Red & Blue</h1>
+      <img src="{{url_for('static', filename='images/red.png')}}">
+      <img src="{{url_for('static', filename='images/blue.png')}}">
 
-        {% elif prediction == 5 %}
-        <h1 class="display-4 fw-bold">Blue</h1>
-        <img src="{{url_for('static', filename='images/blue.png')}}">
+      {% elif prediction == 5 %}
+      <h1 class="display-4 fw-bold">Blue</h1>
+      <img src="{{url_for('static', filename='images/blue.png')}}">
 
-        {% elif prediction == 6 %}       
-        <h1 class="display-4 fw-bold">Blue & Green</h1>
-        <img src="{{url_for('static', filename='images/blue.png')}}">
-        <img src="{{url_for('static', filename='images/green.png')}}">
+      {% elif prediction == 6 %}
+      <h1 class="display-4 fw-bold">Blue & Green</h1>
+      <img src="{{url_for('static', filename='images/blue.png')}}">
+      <img src="{{url_for('static', filename='images/green.png')}}">
 
-        {% elif prediction == 7 %}
-        <h1 class="display-4 fw-bold">Green</h1>
-        <img src="{{url_for('static', filename='images/green.png')}}">
+      {% elif prediction == 7 %}
+      <h1 class="display-4 fw-bold">Green</h1>
+      <img src="{{url_for('static', filename='images/green.png')}}">
 
-        {% elif prediction == 8 %}
-        <h1 class="display-4 fw-bold">Green & Yellow</h1>
-        <img src="{{url_for('static', filename='images/green.png')}}">
-        <img src="{{url_for('static', filename='images/yellow.png')}}">
+      {% elif prediction == 8 %}
+      <h1 class="display-4 fw-bold">Green & Yellow</h1>
+      <img src="{{url_for('static', filename='images/green.png')}}">
+      <img src="{{url_for('static', filename='images/yellow.png')}}">
 
-        {% elif prediction == 9 %}
-        <h1 class="display-4 fw-bold">Yellow</h1>
-        <img src="{{url_for('static', filename='images/yellow.png')}}">
+      {% elif prediction == 9 %}
+      <h1 class="display-4 fw-bold">Yellow</h1>
+      <img src="{{url_for('static', filename='images/yellow.png')}}">
 
-        {% endif %}
+      {% endif %}
       </h1>
     </div>
     <div class="col  py-5">
-      <img class="m-auto" src="data:image/png;base64, {{plot_url}}">
+      <div style="text-align: center;">
+        <img src="data:image/png;base64, {{plot_url}}">
+      </div>
+      <br><br><br>
+      <p><samp>
+          Color procentages:<br>
+          Green:&nbsp;&nbsp;{{color_procentages[0]}}%<br>
+          Blue:&nbsp;&nbsp;&nbsp;{{color_procentages[1]}}%<br>
+          Red:&nbsp;&nbsp;&nbsp;&nbsp;{{color_procentages[2]}}%<br>
+          Yellow:&nbsp;{{color_procentages[3]}}%</samp></p>
     </div>
-    <a href="{{url_for('personalities') + '#personality_green' }}" class="btn btn-lg btn-default">Read green</a>
-    <a href="{{url_for('personalities') + '#personality_blue' }}" class="btn btn-lg btn-default">Read blue</a>
-    <a href="{{url_for('personalities') + '#personality_red' }}" class="btn btn-lg btn-default">Read red</a>
-    <a href="{{url_for('personalities') + '#personality_yellow' }}" class="btn btn-lg btn-default">Read yellow</a>
   </div>
-  
+  <span class="divider"></span>
+  <a href="{{url_for('personalities') + '#personality_green' }}" class="btn btn-lg btn-default">Read green</a>
+  <a href="{{url_for('personalities') + '#personality_blue' }}" class="btn btn-lg btn-default">Read blue</a>
+  <a href="{{url_for('personalities') + '#personality_red' }}" class="btn btn-lg btn-default">Read red</a>
+  <a href="{{url_for('personalities') + '#personality_yellow' }}" class="btn btn-lg btn-default">Read yellow</a>
+
   <!-- <img src="data:image/png;base64, {{pie_url}}"> -->
 
   <p>Count: {{ counters }}</p>

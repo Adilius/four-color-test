@@ -162,7 +162,8 @@ def predictNumber(choices):
     return prediction, counter
 
 # Returns procentage of each color depending on distance to each corner
-def getProcentage(choices):
+def getColorProcentage(choices):
+
     counter = getCounts(choices)
 
     x = -counter.get('green')-counter.get('blue')+counter.get('red')+counter.get('yellow')
@@ -207,3 +208,8 @@ def getProcentage(choices):
     '''
 
     return [green_procentage, blue_procentage, red_procentage, yellow_procentage]
+
+def getTraitProcentage(choices):
+    pass
+
+

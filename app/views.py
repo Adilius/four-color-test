@@ -37,7 +37,15 @@ def result():
     plot_url = qualitative.createPlot(current_choices)
     answers = Answer.query.order_by(Answer.webhash).all()
     procentages = qualitative.getProcentage(current_choices)
-    return render_template('result.html', prediction=prediction, counters=counters, user_fingerprint=[webhash, httphash, combinedhash], answers=answers, plot_url=plot_url, procentages=procentages)
+    pie_url = qualitative.createPieChart(current_choices)
+    return render_template('result.html',
+    prediction=prediction,
+    counters=counters,
+    user_fingerprint=[webhash, httphash, combinedhash],
+    answers=answers,
+    plot_url=plot_url,
+    procentages=procentages,
+    pie_url=pie_url)
 
 @app.route('/personalities')
 def personalities():

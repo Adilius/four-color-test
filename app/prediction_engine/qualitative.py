@@ -1,3 +1,5 @@
+import matplotlib
+matplotlib.use('Agg')   # Use matplotlib as backend renderer
 import matplotlib.pyplot as plt
 import io
 import base64
@@ -16,7 +18,7 @@ answersheet = [
     {1: "red", 2: "green", 3: "yellow", 4: "blue"} #10
 ]
 
-# Returns count of each personality type  
+# Returns dict count of each personality type  
 def getCounts(choices):
     counter = { "green": 0, "blue": 0, "red": 0, "yellow": 0 }       # Counter for each type
     for count, choice in enumerate(choices):       # Count each color type
@@ -38,24 +40,55 @@ def createPlot(choices):
     ax.axvline(0,color = 'black',linestyle='solid',linewidth=1)
     ax.axhline(0,color = 'black',linestyle='solid',linewidth=1)
 
-    ax.fill_between([-10, 0],-10,0,alpha=0.5, color='#00FF00')  # green
-    ax.fill_between([0, 10], -10, 0, alpha=0.5, color='#FFFF00')  # yellow
-    ax.fill_between([-10, 0], 0, 10, alpha=0.5, color='#0000FF')  # blue
-    ax.fill_between([0, 10], 0, 10, alpha=0.5, color='#FF0000')  # red
+    ax.fill_between([-10, 0],-10,0,alpha=0.9, color='#00FF00')  # green
+    ax.fill_between([-10, 0], 0, 10, alpha=0.9, color='#0000FF')  # blue
+    ax.fill_between([0, 10], 0, 10, alpha=0.9, color='#FF0000')  # red
+    ax.fill_between([0, 10], -10, 0, alpha=0.9, color='#FFFF00')  # yellow
 
     x = -counter.get('green')-counter.get('blue')+counter.get('red')+counter.get('yellow')
     y = -counter.get('green')-counter.get('yellow')+counter.get('blue')+counter.get('red')
     plt.plot(x, y, marker='o', markersize=5, color='black')
 
-    plt.plot()
     ax.axes.get_xaxis().set_visible(False)
     ax.axes.get_yaxis().set_visible(False)
     ax.set_frame_on(False)
-    plt.savefig(img, format='png', bbox_inches='tight', pad_inches = 0)
+    plt.savefig(img, format='png', bbox_inches='tight', pad_inches = 0, transparent=True)
 
     plot_img = base64.b64encode(img.getvalue()).decode()
 
     return plot_img
+
+# Pie Chart helper function
+def autopct_format(values):
+    def my_format(pct):
+        total = sum(values)
+        val = int(round(pct*total/100.0))
+        if val == 0:
+            return ''
+        return '{v:d}'.format(v=val)
+    return my_format
+
+# Returns base64 image pie chart of selected choices
+def createPieChart(choices):
+    counter = getCounts(choices)
+    values = list(counter.values())
+    colors = ['#00FF00', '#0000FF', '#FF0000', '#FFFF00']
+    labels = values
+    img = io.BytesIO()
+    fig, ax = plt.subplots(figsize=(5,5))
+    patches, texts, autotexts = ax.pie(
+        values, colors = colors, autopct = autopct_format(values),
+        wedgeprops={'alpha':0.9},
+        textprops={'size':'x-large'})
+    plt.setp(autotexts, color='white', fontweight='bold')
+    plt.tight_layout()
+    ax.axis('equal')
+
+    plt.plot()
+    plt.savefig(img, format='png', bbox_inches='tight', pad_inches = 0, transparent=True)
+
+    pie_img = base64.b64encode(img.getvalue()).decode()
+    return pie_img
 
 # Returns list of predicted personality types
 def predict(choices):
@@ -163,25 +196,22 @@ def getProcentage(choices):
     red_procentage = int(round((red_distance_inversed/inversed_total)*100))
     yellow_procentage = int(round((yellow_distance_inversed/inversed_total)*100))
 
+    '''
     print("X:", x, " Y:", y)
-    
     print("Green distance:", green_distance)
     print("Green inversed:", green_distance_inversed)
     print("Green procentage:", green_procentage)
-
     print("Blue distance:", blue_distance)
     print("Blue distance inversed:", blue_distance_inversed)
     print("Blue procentage:", blue_procentage)
-
     print("Red distance:", red_distance)
     print("Red distance inversed:", red_distance_inversed)
     print("Red procentage:", red_procentage)
-
     print("Yellow distance:", yellow_distance)
     print("Yellow distance inversed:", yellow_distance_inversed)
     print("Yellow procentage:", yellow_procentage)
-
     print("Total:", total)
     print("Inversed total:", inversed_total)
+    '''
 
     return [green_procentage, blue_procentage, red_procentage, yellow_procentage]

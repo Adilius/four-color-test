@@ -38,10 +38,10 @@ def createPlot(choices):
     ax.axvline(0,color = 'black',linestyle='solid',linewidth=1)
     ax.axhline(0,color = 'black',linestyle='solid',linewidth=1)
 
-    ax.fill_between([-10, 0],-10,0,alpha=0.3, color='#00FF00')  # green
-    ax.fill_between([0, 10], -10, 0, alpha=0.3, color='#FFFF00')  # yellow
-    ax.fill_between([-10, 0], 0, 10, alpha=0.3, color='#0000FF')  # blue
-    ax.fill_between([0, 10], 0, 10, alpha=0.3, color='#FF0000')  # red
+    ax.fill_between([-10, 0],-10,0,alpha=0.5, color='#00FF00')  # green
+    ax.fill_between([0, 10], -10, 0, alpha=0.5, color='#FFFF00')  # yellow
+    ax.fill_between([-10, 0], 0, 10, alpha=0.5, color='#0000FF')  # blue
+    ax.fill_between([0, 10], 0, 10, alpha=0.5, color='#FF0000')  # red
 
     x = -counter.get('green')-counter.get('blue')+counter.get('red')+counter.get('yellow')
     y = -counter.get('green')-counter.get('yellow')+counter.get('blue')+counter.get('red')
@@ -145,20 +145,26 @@ def getProcentage(choices):
 
     green_distance = math.sqrt(pow(x+10, 2) + pow(y+10, 2))
     green_distance_inversed = 1/green_distance
+
     blue_distance = math.sqrt(pow(x+10, 2) + pow(y-10, 2))
     blue_distance_inversed = 1/blue_distance
+
     red_distance = math.sqrt(pow(x-10, 2) + pow(y-10, 2))
     red_distance_inversed = 1/red_distance
+
     yellow_distance = math.sqrt(pow(x-10, 2) + pow(y+10, 2))
     yellow_distance_inversed = 1/yellow_distance
+
     total = green_distance + blue_distance + red_distance + yellow_distance
     inversed_total = green_distance_inversed + blue_distance_inversed + red_distance_inversed + yellow_distance_inversed
+
     green_procentage = int(round((green_distance_inversed/inversed_total)*100))
     blue_procentage = int(round((blue_distance_inversed/inversed_total)*100))
     red_procentage = int(round((red_distance_inversed/inversed_total)*100))
     yellow_procentage = int(round((yellow_distance_inversed/inversed_total)*100))
 
     print("X:", x, " Y:", y)
+    
     print("Green distance:", green_distance)
     print("Green inversed:", green_distance_inversed)
     print("Green procentage:", green_procentage)

@@ -47,7 +47,7 @@ def createPlot(choices):
 
     x = -counter.get('green')-counter.get('blue')+counter.get('red')+counter.get('yellow')
     y = -counter.get('green')-counter.get('yellow')+counter.get('blue')+counter.get('red')
-    plt.plot(x, y, marker='o', markersize=5, color='black')
+    plt.plot(x, y, marker='o', markersize=7, color='black')
 
     ax.axes.get_xaxis().set_visible(False)
     ax.axes.get_yaxis().set_visible(False)
@@ -133,23 +133,18 @@ def predictNumber(choices):
 
     if set(['green','yellow','blue','red']) == set(colors):
         prediction = 1
-        print("1")
 
     elif set(['yellow','red']) == set(colors):
         prediction = 2
-        print('2')
 
     elif set(['red']) == set(colors):
         prediction = 3
-        print('3')
 
     elif set(['blue','red']) == set(colors):
         prediction = 4
-        print('4')
 
     elif set(['blue']) == set(colors):
         prediction = 5
-        print('5')
 
     elif set(['green','blue']) == set(colors):
         prediction = 6
@@ -157,15 +152,12 @@ def predictNumber(choices):
 
     elif set(['green']) == set(colors):
         prediction = 7
-        print('7')
 
     elif set(['green','yellow']) == set(colors):
         prediction = 8
-        print('8')
 
     elif set(['yellow']) == set(colors):
         prediction = 9
-        print('9')
 
     return prediction, counter
 

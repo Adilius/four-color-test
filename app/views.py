@@ -38,6 +38,7 @@ def result():
     answers = Answer.query.order_by(Answer.webhash).all()
     procentages = qualitative.getProcentage(current_choices)
     pie_url = qualitative.createPieChart(current_choices)
+    
     return render_template('result.html',
     prediction=prediction,
     counters=counters,

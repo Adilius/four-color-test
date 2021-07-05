@@ -45,7 +45,7 @@ def result():
     prediction, counters = qualitative.predictNumber(current_choices)
     plot_url = qualitative.createPlot(current_choices)
     pie_url = qualitative.createPieChart(current_choices)
-    answers = Answer.query.order_by(Answer.webhash).all()
+    answers = Answer.query.order_by(Answer.httphash).all()
     color_procentages = qualitative.getColorProcentage(current_choices)
 
     return render_template('result.html',

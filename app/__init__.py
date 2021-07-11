@@ -1,14 +1,16 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-
 app = Flask(__name__)
+app.config.from_object('app.configuration.Config')
 
 #Configuration of application, see configuration.py, choose one and uncomment.
-#app.config.from_object('configuration.ProductionConfig')
-app.config.from_object('app.configuration.DevelopmentConfig')
-#app.config.from_object('configuration.TestingConfig')
+#configuration = 'app.configuration.ProductionConfig'
+configuration = 'app.configuration.DevelopmentConfig'
+print('Running server on ' + app.config['ENV'] + '.')
+app.config.from_object(configuration)
 
+from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy(app)
+print('Running database at', app.config['SQLALCHEMY_DATABASE_URI'])
 
 from app import views, models
 

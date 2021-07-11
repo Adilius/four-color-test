@@ -1,11 +1,11 @@
 from flask import request
 from hashlib import blake2b
 
-# Takes the HTTP request headers and hash from client to create combined hash
+# Takes the HTTP request headers and hash from webclient to create combined hash
 def create_fingerprint(request, webhash = ""):
     hash_module = blake2b(digest_size=16)
 
-    # HTTP request values
+    # Get HTTP request values
     user_agent = request.user_agent.string
     mimetype = request.mimetype
     accept_encodings = request.accept_encodings

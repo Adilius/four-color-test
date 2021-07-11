@@ -19,8 +19,10 @@ def quiz():
             request, web_fingerprint)
         session['choices'] = choices
         session['user_hases'] = webhash, httphash, combinedhash
-        answer = Answer(webhash=webhash, httphash=httphash,
-                        combinedhash=combinedhash, choices=choices)
+        answer = Answer(webhash=webhash,
+                        httphash=httphash,
+                        combinedhash=combinedhash,
+                        choices=choices)
 
         try:
             db.session.merge(answer)
@@ -37,7 +39,7 @@ def quiz():
 @app.route('/result')
 def result():
     # If session is empty, return to index
-    if not 'choices' in session or not 'user_hases' in session :
+    if not 'choices' in session or not 'user_hases' in session:
         return redirect(url_for('index'))
 
     current_choices = session['choices']
@@ -56,6 +58,7 @@ def result():
                            plot_url=plot_url,
                            color_procentages=color_procentages,
                            pie_url=None)
+
 
 @app.route('/personalities')
 def personalities():

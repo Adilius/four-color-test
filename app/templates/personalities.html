@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/personalities.css')}}"
     <title>Personalities</title>
 {% endblock %}
 
@@ -8,7 +9,6 @@
 <div class="site-wrapper">
     <div class="site-wrapper-inner">
       <div class="container">
-          <p>Personalities</p>
           <h1>Red</h1>
           <p>Red personality types are dynamic and driven individuals. They have goals in life that others may have difficult reaching,
           partly because the goals are near impossible set, but also because they always strive forward, always push themselves harder, and almost never give up.
@@ -17,6 +17,14 @@
           unless they themselves change their mind on their own. And least but perhaps biggest feature of red types is their need for competivness, always in the 
           need to be the best in whatever they are currently interested in.
           </p>
+          <div class="row">
+            <div class="col">
+              <img src="{{url_for('static', filename='images/mountain.svg')}}" class="d-block mx-auto filter-white" data-bs-toggle="tooltip" data-bs-placement="top"/>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+          </div>
       </div>
     </div>
   </div>

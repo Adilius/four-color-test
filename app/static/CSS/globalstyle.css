@@ -5,8 +5,13 @@
 /* GREEN  00cc88*/
 /* GREEN FOCUS  00ffaa */
 
+:root {
+  --dark--color: #232741;
+  --green--color: #00cc88;
+}
+
 html, body {
-  background: #232741;
+  background: var(--dark--color);
   height: 100%;
   width: 100%;
   margin: 0;
@@ -14,14 +19,15 @@ html, body {
   left: 0;
   top: 0;
   overflow: auto;
+  background-repeat:no-repeat; 
 }
 
 .dark-bg {
-  background-color: #232741;
+  background-color: var(--dark--color);
 }
 
 .border-green{
-  border-color: #00cc88 !important;
+  border-color: var(--green--color) !important;
 }
 
 p {
@@ -51,5 +57,5 @@ p, h1, h2, h3, h4, h5, h6, th, td, label {
   margin: 50px 0;
   width: auto;
   height: 2px;
-  background-color: #00cc88;
+  background-color: var(--green--color);
 }

@@ -1,3 +1,21 @@
-.filter-white {
-    fill: white;
+@import './globalstyle.css';
+
+#red {
+    background-color: #4B2035;
+}
+
+#blue {
+    background-color: #202352;
+}
+
+#yellow {
+    background-color: #5F622F;
+}
+
+#green {
+    background-color: #203B3B;
+}
+
+.border-dark {
+    color: var(--dark--color) !important;
 }

@@ -1,6 +1,5 @@
 from flask import Flask
 app = Flask(__name__)
-app.config.from_object('app.configuration.Config')
 
 #Configuration of application, see configuration.py, choose one and uncomment.
 #configuration = 'app.configuration.ProductionConfig'

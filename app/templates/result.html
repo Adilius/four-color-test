@@ -68,16 +68,12 @@
     </div>
   </div>
   <span class="divider"></span>
-  <a href="{{url_for('personalities') + '#personality_green' }}" class="btn btn-lg btn-default">Read green</a>
-  <a href="{{url_for('personalities') + '#personality_blue' }}" class="btn btn-lg btn-default">Read blue</a>
-  <a href="{{url_for('personalities') + '#personality_red' }}" class="btn btn-lg btn-default">Read red</a>
-  <a href="{{url_for('personalities') + '#personality_yellow' }}" class="btn btn-lg btn-default">Read yellow</a>
 
   <!-- <img src="data:image/png;base64, {{pie_url}}"> -->
 
   <p>Count: {{ counters }}</p>
   <p>User hashes: {{ user_fingerprint }}</p>
-  <p>Procentages: {{ procentages }}</p>
+  <p>Procentages: {{ color_procentages }}</p>
   <table class="table">
     <thead>
       <tr>

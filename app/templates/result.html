@@ -71,6 +71,8 @@
 
   <!-- <img src="data:image/png;base64, {{pie_url}}"> -->
 
+  {% if config['ENV'] == 'Development' %}
+
   <p>Count: {{ counters }}</p>
   <p>User hashes: {{ user_fingerprint }}</p>
   <p>Procentages: {{ color_procentages }}</p>
@@ -96,6 +98,6 @@
   </table>
 </div>
 
-</script>
+{% endif %}
 
 {% endblock %}

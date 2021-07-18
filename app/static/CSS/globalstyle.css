@@ -34,11 +34,15 @@ p {
   font-size: 1.15rem;
   font-weight: 400;
   font-family: Whitney,Helvetica,Arial,sans-serif;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
-p, h1, h2, h3, h4, h5, h6, th, td, label {
+p, h1, h2, h3, h4, h5, h6, th, td, label, li, ul {
   color: #fff;
+}
+
+.list-dots {
+  list-style-type:disc;
 }
 
 .btn-default,

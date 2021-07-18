@@ -4,8 +4,8 @@ app = Flask(__name__)
 #Configuration of application, see configuration.py, choose one and uncomment.
 #configuration = 'app.configuration.ProductionConfig'
 configuration = 'app.configuration.DevelopmentConfig'
-print('Running server on ' + app.config['ENV'] + '.')
 app.config.from_object(configuration)
+print('Running server on ' + app.config['ENV'] + '.')
 
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy(app)

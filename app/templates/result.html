@@ -2,6 +2,7 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/personalities.css')}}">
 <title> Four color result</title>
 {% endblock %}
 
@@ -67,36 +68,71 @@
           Yellow:&nbsp;{{color_procentages[3]}}%</samp></p>
     </div>
   </div>
-  <span class="divider"></span>
-
-  <!-- <img src="data:image/png;base64, {{pie_url}}"> -->
-
-  {% if config['ENV'] == 'Development' %}
-
-  <p>Count: {{ counters }}</p>
-  <p>User hashes: {{ user_fingerprint }}</p>
-  <p>Procentages: {{ color_procentages }}</p>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">webhash</th>
-        <th scope="col">httphash</th>
-        <th scope="col">combinedhash</th>
-        <th scope="col">Choices</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for answer in answers %}
-      <tr>
-        <td>{{ answer.httphash}}</td>
-        <td>{{ answer.webhash}}</td>
-        <td>{{ answer.combinedhash}}</td>
-        <td>{{ answer.choices}}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
 </div>
+
+{% if prediction == 1 %}
+{% include 'personalities/personality_red.html' %}
+{% include 'personalities/personality_yellow.html' %}
+
+{% elif prediction == 2 %}
+<h1 class="display-4 fw-bold">Red & Yellow</h1>
+{% include 'personalities/personality_red.html' %}
+{% include 'personalities/personality_yellow.html' %}
+
+{% elif prediction == 3 %}
+{% include 'personalities/personality_red.html' %}
+
+{% elif prediction == 4 %}
+{% include 'personalities/personality_red.html' %}
+{% include 'personalities/personality_blue.html' %}
+
+{% elif prediction == 5 %}
+{% include 'personalities/personality_blue.html' %}
+
+{% elif prediction == 6 %}
+{% include 'personalities/personality_blue.html' %}
+{% include 'personalities/personality_green.html' %}
+
+{% elif prediction == 7 %}
+{% include 'personalities/personality_green.html' %}
+
+{% elif prediction == 8 %}
+{% include 'personalities/personality_green.html' %}
+{% include 'personalities/personality_yellow.html' %}
+
+{% elif prediction == 9 %}
+{% include 'personalities/personality_yellow.html' %}
+
+{% endif %}
+
+
+<span class="divider"></span>
+
+{% if config['ENV'] == 'Development' %}
+
+<p>Count: {{ counters }}</p>
+<p>User hashes: {{ user_fingerprint }}</p>
+<p>Procentages: {{ color_procentages }}</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">webhash</th>
+      <th scope="col">httphash</th>
+      <th scope="col">combinedhash</th>
+      <th scope="col">Choices</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for answer in answers %}
+    <tr>
+      <td>{{ answer.httphash}}</td>
+      <td>{{ answer.webhash}}</td>
+      <td>{{ answer.combinedhash}}</td>
+      <td>{{ answer.choices}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
 {% endif %}
 

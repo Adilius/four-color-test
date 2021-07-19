@@ -68,28 +68,6 @@ def autopct_format(values):
         return '{v:d}'.format(v=val)
     return my_format
 
-# Returns base64 image pie chart of selected choices
-def createPieChart(choices):
-    counter = getCounts(choices)
-    values = list(counter.values())
-    colors = ['#00FF00', '#0000FF', '#FF0000', '#FFFF00']
-    labels = values
-    img = io.BytesIO()
-    fig, ax = plt.subplots(figsize=(5,5))
-    patches, texts, autotexts = ax.pie(
-        values, colors = colors, autopct = autopct_format(values),
-        wedgeprops={'alpha':0.9},
-        textprops={'size':'x-large'})
-    plt.setp(autotexts, color='white', fontweight='bold')
-    plt.tight_layout()
-    ax.axis('equal')
-
-    plt.plot()
-    plt.savefig(img, format='png', bbox_inches='tight', pad_inches = 0, transparent=True)
-
-    pie_img = base64.b64encode(img.getvalue()).decode()
-    return pie_img
-
 # Returns list of predicted personality types
 def predict(choices):
     counter = getCounts(choices)

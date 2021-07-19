@@ -46,7 +46,6 @@ def result():
     webhash, httphash, combinedhash = session['user_hases']
     prediction, counters = qualitative.predictNumber(current_choices)
     plot_url = qualitative.createPlot(current_choices)
-    pie_url = qualitative.createPieChart(current_choices)
     answers = Answer.query.order_by(Answer.httphash).all()
     color_procentages = qualitative.getColorProcentage(current_choices)
 
@@ -56,8 +55,7 @@ def result():
                            user_fingerprint=[webhash, httphash, combinedhash],
                            answers=answers,
                            plot_url=plot_url,
-                           color_procentages=color_procentages,
-                           pie_url=None)
+                           color_procentages=color_procentages)
 
 
 @app.route('/personalities')

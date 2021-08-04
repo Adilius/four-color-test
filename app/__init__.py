@@ -1,6 +1,9 @@
 from flask import Flask
 app = Flask(__name__)
 
+# Allows the app to identify the static folder
+app.static_folder = 'static'
+
 #Configuration of application, see configuration.py, choose one and uncomment.
 configuration = 'app.configuration.ProductionConfig'
 #configuration = 'app.configuration.DevelopmentConfig'

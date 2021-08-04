@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 from whitenoise import WhiteNoise
 app = Flask(__name__)
 
@@ -6,8 +6,11 @@ app = Flask(__name__)
 app.static_folder = 'static'
 app.wsgi_app = WhiteNoise(
     app.wsgi_app,
-    root='static/',
-    prefix='static/')
+    root='static/')
+
+@app.route("/static/<path:path>")
+def static_dir(path):
+    return send_from_directory("static", path)
 
 #Configuration of application, see configuration.py, choose one and uncomment.
 configuration = 'app.configuration.ProductionConfig'

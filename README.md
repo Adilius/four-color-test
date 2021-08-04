@@ -1,18 +1,21 @@
-# four-color-test
+# Fourpersonalityquiz
 
+Personality quiz written in Flask
 
 ## Setup
 
-Create a virtual enviroment inside the repository with python 3.9.1 using Powershell: `virtualenv -p /path/to/Python/Python39/python.exe venv`
-
-Activate the virtual enviroment: `venv\Scripts\activate.ps1`
-
-Install dependencies again: `pip install -r requirements.txt`
-
-When done running examples code, exit the virtual enviroment using: `deactivate`
+Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
 ## Run
 
 `python app.py`
 
-![image](https://user-images.githubusercontent.com/43440295/122429421-11296600-cf93-11eb-8e76-2af911b30875.png)
+## Screenshots
+
+![image](https://user-images.githubusercontent.com/43440295/128189167-46b129c0-f499-4efa-b774-159ba942b1d5.png)
+![image](https://user-images.githubusercontent.com/43440295/128189219-358377d4-a222-47fb-a29e-58ab43fdba3a.png)
+![image](https://user-images.githubusercontent.com/43440295/128189337-23bcae0f-d735-49d8-a7a4-7073199578bb.png)
+

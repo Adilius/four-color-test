@@ -4,8 +4,10 @@ app = Flask(__name__)
 
 # Allows the app to identify the static folder
 app.static_folder = 'static'
-app.static_url_path = ''
-app.wsgi_app = WhiteNoise(app.wsgi_app, root='static/')
+app.wsgi_app = WhiteNoise(
+    app.wsgi_app,
+    root='static/',
+    prefix='static/')
 
 #Configuration of application, see configuration.py, choose one and uncomment.
 configuration = 'app.configuration.ProductionConfig'

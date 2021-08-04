@@ -1,0 +1,65 @@
+/* COLOURS */
+/* DARK   232741 */
+/* GREY   d9d9d9*/
+/* WHITE  f0f0f0*/
+/* GREEN  00cc88*/
+/* GREEN FOCUS  00ffaa */
+
+:root {
+  --dark--color: #232741;
+  --green--color: #00cc88;
+}
+
+html, body {
+  background: var(--dark--color);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+  overflow: auto;
+  background-repeat:no-repeat; 
+}
+
+.dark-bg {
+  background-color: var(--dark--color);
+}
+
+.border-green{
+  border-color: var(--green--color) !important;
+}
+
+p {
+  font-size: 1.15rem;
+  font-weight: 400;
+  font-family: Whitney,Helvetica,Arial,sans-serif;
+  line-height: 1.6;
+}
+
+p, h1, h2, h3, h4, h5, h6, th, td, label, li, ul {
+  color: #fff;
+}
+
+.list-dots {
+  list-style-type:disc;
+}
+
+.btn-default,
+.btn-default:hover,
+.btn-default:focus {
+  color: #232741;
+  text-shadow: none;
+  background-color: #fff;
+  border: 1px solid #fff;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+.divider {
+  display: block;
+  margin: 50px 0;
+  width: auto;
+  height: 2px;
+  background-color: var(--green--color);
+}

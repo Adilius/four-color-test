@@ -6,7 +6,8 @@ app = Flask(__name__)
 app.static_folder = 'static'
 app.wsgi_app = WhiteNoise(
     app.wsgi_app,
-    root='static/')
+    root='static/',
+    prefix='static/')
 
 @app.route("/static/<path:path>")
 def static_dir(path):

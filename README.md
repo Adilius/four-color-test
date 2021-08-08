@@ -8,10 +8,18 @@ Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
-
 ## Run
 
 `python app.py`
+
+## Database
+
+`python .\database_viewer.py`
+
+Login to heroku 
+`heroku login`
+Download database file
+`heroku ps:copy app/app.db --app fourpersonalityquiz`
 
 ## Screenshots
 

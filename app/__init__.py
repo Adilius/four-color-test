@@ -2,8 +2,8 @@ from flask import Flask
 app = Flask(__name__)
 
 #Configuration of application, see configuration.py, choose one and uncomment.
-configuration = 'app.configuration.ProductionConfig'
-#configuration = 'app.configuration.DevelopmentConfig'
+#configuration = 'app.configuration.ProductionConfig'
+configuration = 'app.configuration.DevelopmentConfig'
 app.config.from_object(configuration)
 print('Running server on ' + app.config['ENV'] + '.')
 

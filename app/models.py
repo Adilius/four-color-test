@@ -2,14 +2,14 @@ from app import db
 
 class Answer(db.Model):
     __tablename__ = 'Answer'
-    webhash = db.Column(db.String(32), nullable=False, primary_key=True)
-    httphash = db.Column(db.String(32), nullable=False, primary_key=True)
-    combinedhash = db.Column(db.String(32), nullable=False, primary_key=True)
+    combined_hash = db.Column(db.String(32), nullable=False, primary_key=True)
     choices = db.Column(db.PickleType, nullable=False)
+    result = db.Column(db.PickleType, nullable=False)
+    color = db.Column(db.Integer, nullable=False)
 
+    # Returns answer in list
     def getAnswer(self):
-        return [self.webhash, self.httphash, self.combinedhash, self.choices]
+        return [self.combined_hash, self.choices, self.result, self.color]
 
     def __repr__(self):
-        #return [self.webhash, self.httphash, self.combinedhash, self.choices]
-        return "<Answer(Webhash='%s', HTTPhash='%s', combinedhash='%s', Choices='%s')>'" % (self.webhash, self.httphash, self.combinedhash, self.choices)
+        return (f'<Answer({self.combined_hash=}, {self.choices=}, {self.result=}, {self.color=},')

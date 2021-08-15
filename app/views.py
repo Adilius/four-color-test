@@ -13,23 +13,17 @@ def index():
 @app.route('/quiz', methods=['GET', 'POST'])
 def quiz():
     if request.method == 'POST':
+
+        # Get user data
         choices = list(map(int, list(request.form.to_dict().values())[:-1]))
         web_fingerprint = list(request.form.to_dict().values())[-1:][0]
-        webhash, httphash, combinedhash = fingerprint.create_fingerprint(
-            request, web_fingerprint)
-        session['choices'] = choices
-        session['user_hases'] = webhash, httphash, combinedhash
-        answer = Answer(webhash=webhash,
-                        httphash=httphash,
-                        combinedhash=combinedhash,
-                        choices=choices)
 
-        try:
-            db.session.merge(answer)
-            db.session.commit()
-            return redirect(url_for('result'))
-        except:
-            print("Error pushing to database.")
+        # Compute combined hash
+        combined_hash = fingerprint.create_fingerprint(request, web_fingerprint)
+
+        # Store data in session
+        session['choices'] = choices
+        session['user_hash'] = combined_hash
 
         return redirect(url_for('result'))
 
@@ -38,22 +32,49 @@ def quiz():
 
 @app.route('/result')
 def result():
-    # If session is empty, return to index
-    if not 'choices' in session or not 'user_hases' in session:
+
+    # Check if session has required data
+    if not 'choices' in session or not 'user_hash' in session:
         return redirect(url_for('index'))
 
-    current_choices = session['choices']
-    webhash, httphash, combinedhash = session['user_hases']
-    prediction, counters = qualitative.predictNumber(current_choices)
-    plot_url = qualitative.createPlot(current_choices)
-    answers = Answer.query.order_by(Answer.httphash).all()
-    color_procentages = qualitative.getColorProcentage(current_choices)
+    # Get data from session
+    choices = session['choices']
+    combined_hash = session['user_hash']
+
+    # Predict color, and return color counters
+    user_color, counters = qualitative.predictNumber(choices)
+
+    # Create color plot
+    plot_url = qualitative.createPlot(choices)
+
+    # Compute color procentages
+    color_procentages = qualitative.getColorProcentage(choices)
+
+    # Compute user x,y position
+    user_position = qualitative.getPosition(choices)
+
+
+    # If we are in development config 
+    if app.config['ENV'] == 'Development':
+        answers = Answer.query.order_by(Answer.combined_hash).all()
+
+    # Create an answer to push to database
+    answer = Answer(combined_hash = combined_hash,
+                    choices = choices,
+                    result = user_position,
+                    color = user_color)
+
+    try:
+        db.session.merge(answer)
+        db.session.commit()
+        print(f'Pushed answer to database: {combined_hash}')
+    except:
+        print("Error pushing to database.")
 
     return render_template('result.html',
-                           prediction=prediction,
+                           prediction=user_color,
                            counters=counters,
-                           user_fingerprint=[webhash, httphash, combinedhash],
-                           answers=answers,
+                           user_fingerprint=combined_hash,
                            plot_url=plot_url,
                            color_procentages=color_procentages)
 

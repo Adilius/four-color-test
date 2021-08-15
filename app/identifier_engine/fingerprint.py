@@ -2,7 +2,7 @@ from flask import request
 from hashlib import blake2b
 
 # Takes the HTTP request headers and hash from webclient to create combined hash
-def create_fingerprint(request, webhash = ""):
+def create_fingerprint(request, web_hash = ""):
     hash_module = blake2b(digest_size=16)
 
     # Get HTTP request values
@@ -15,25 +15,11 @@ def create_fingerprint(request, webhash = ""):
     # Create hash using HTTP request header
     request_long = str(user_agent) + str(mimetype) + str(accept_encodings) + str(accept_mimetypes) + str(remote_addr)
     hash_module.update(request_long.encode('utf-8'))
-    HTTP_hash = hash_module.hexdigest()
+    http_hash = hash_module.hexdigest()
 
-    # Create combined hash using HTTP hash and webhash
-    combined_string = str(request_long) + str(webhash)
+    # Create combined hash using http_hash and web_hash
+    combined_string = str(http_hash) + str(web_hash)
     hash_module.update(combined_string.encode('utf-8'))
     combined_hash = hash_module.hexdigest()    
 
-    '''
-    print("-------- REQUEST HEADERS --------")
-    print("user_agent:", user_agent)
-    print("mimetype:", mimetype)
-    print("Accept_encodings:", accept_encodings)
-    print("Accept_mimetypes:", accept_mimetypes)
-    print("Remote_addr:", remote_addr)
-
-    print("-------- HASHES --------")
-    print("Web hash:", webhash)
-    print("HTTP hash:", HTTP_hash)
-    print("Super hash:", combined_hash)
-    '''
-
-    return webhash, HTTP_hash, combined_hash
+    return combined_hash

@@ -21,13 +21,12 @@ answersheet = [
 # Returns dict count of each personality type  
 def getCounts(choices):
     counter = { "green": 0, "blue": 0, "red": 0, "yellow": 0 }       # Counter for each type
-    for count, choice in enumerate(choices):       # Count each color type
+    for count, choice in enumerate(choices):                        # Count each color type
         counter[answersheet[count].get(choice)] += 1
     return counter
 
 # Returns base64 image plot of personality type plotted on graph
 def createPlot(choices):
-    counter = getCounts(choices)
     img = io.BytesIO()
 
     fig,ax = plt.subplots(figsize=(5,5))
@@ -45,8 +44,7 @@ def createPlot(choices):
     ax.fill_between([0, 10], 0, 10, alpha=0.9, color='#FF0000')  # red
     ax.fill_between([0, 10], -10, 0, alpha=0.9, color='#FFFF00')  # yellow
 
-    x = -counter.get('green')-counter.get('blue')+counter.get('red')+counter.get('yellow')
-    y = -counter.get('green')-counter.get('yellow')+counter.get('blue')+counter.get('red')
+    x,y = getPosition(choices)
     plt.plot(x, y, marker='o', markersize=7, color='black')
 
     ax.axes.get_xaxis().set_visible(False)
@@ -57,16 +55,6 @@ def createPlot(choices):
     plot_img = base64.b64encode(img.getvalue()).decode()
 
     return plot_img
-
-# Pie Chart helper function
-def autopct_format(values):
-    def my_format(pct):
-        total = sum(values)
-        val = int(round(pct*total/100.0))
-        if val == 0:
-            return ''
-        return '{v:d}'.format(v=val)
-    return my_format
 
 # Returns list of predicted personality types
 def predict(choices):
@@ -126,7 +114,6 @@ def predictNumber(choices):
 
     elif set(['green','blue']) == set(colors):
         prediction = 6
-        print('6')
 
     elif set(['green']) == set(colors):
         prediction = 7
@@ -187,7 +174,11 @@ def getColorProcentage(choices):
 
     return [green_procentage, blue_procentage, red_procentage, yellow_procentage]
 
-def getTraitProcentage(choices):
-    pass
+# Returns x,y position of choices
+def getPosition(choices):
+    counter = getCounts(choices)
 
+    x = -counter.get('green')-counter.get('blue')+counter.get('red')+counter.get('yellow')
+    y = -counter.get('green')-counter.get('yellow')+counter.get('blue')+counter.get('red')
 
+    return [x, y]

@@ -10,7 +10,7 @@ session = orm.scoped_session(orm.sessionmaker())(bind=engine)
 from app.models import Answer
 
 base.metadata.create_all()
-answers = Answer.query.order_by(Answer.httphash).all()
+answers = Answer.query.all()
 print(f"{len(answers)} answers in database.")
 for answer in answers:
     print(answer.getAnswer())

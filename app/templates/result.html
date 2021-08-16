@@ -105,37 +105,4 @@
 
 {% endif %}
 
-
-
-
-{% if config['ENV'] == 'Development' %}
-
-<span class="divider"></span>
-
-<p>Count: {{ counters }}</p>
-<p>User hashes: {{ user_fingerprint }}</p>
-<p>Procentages: {{ color_procentages }}</p>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">webhash</th>
-      <th scope="col">httphash</th>
-      <th scope="col">combinedhash</th>
-      <th scope="col">Choices</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for answer in answers %}
-    <tr>
-      <td>{{ answer.httphash}}</td>
-      <td>{{ answer.webhash}}</td>
-      <td>{{ answer.combinedhash}}</td>
-      <td>{{ answer.choices}}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-{% endif %}
-
 {% endblock %}

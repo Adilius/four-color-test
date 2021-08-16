@@ -16,14 +16,13 @@ def quiz():
 
         # Get user data
         choices = list(map(int, list(request.form.to_dict().values())[:-1]))
-        web_fingerprint = list(request.form.to_dict().values())[-1:][0]
+        web_hash = list(request.form.to_dict().values())[-1:][0]
 
-        # Compute combined hash
-        combined_hash = fingerprint.create_fingerprint(request, web_fingerprint)
+
 
         # Store data in session
         session['choices'] = choices
-        session['user_hash'] = combined_hash
+        session['web_hash'] = web_hash
 
         return redirect(url_for('result'))
 
@@ -34,12 +33,15 @@ def quiz():
 def result():
 
     # Check if session has required data
-    if not 'choices' in session or not 'user_hash' in session:
+    if not 'choices' in session or not 'web_hash' in session:
         return redirect(url_for('index'))
 
     # Get data from session
     choices = session['choices']
-    combined_hash = session['user_hash']
+    web_hash = session['web_hash']
+
+    # Compute combined hash
+    combined_hash = fingerprint.create_fingerprint(request, web_hash)
 
     # Predict color, and return color counters
     user_color, counters = qualitative.predictNumber(choices)
@@ -56,7 +58,12 @@ def result():
 
     # If we are in development config 
     if app.config['ENV'] == 'Development':
-        answers = Answer.query.order_by(Answer.combined_hash).all()
+        print('User entry:')
+        print(f'Combined hash: {combined_hash}')
+        print(f'Counter: {counters}')
+        print(f'Color procentages: {color_procentages}')
+        print(f'User position: {user_position}')
+        print(f'User color: {user_color}')
 
     # Create an answer to push to database
     answer = Answer(combined_hash = combined_hash,
@@ -73,7 +80,6 @@ def result():
 
     return render_template('result.html',
                            prediction=user_color,
-                           counters=counters,
                            user_fingerprint=combined_hash,
                            plot_url=plot_url,
                            color_procentages=color_procentages)
@@ -82,12 +88,6 @@ def result():
 @app.route('/personalities')
 def personalities():
     return render_template('personalities.html')
-
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
 
 @app.errorhandler(404)
 def error_404(error):

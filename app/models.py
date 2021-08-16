@@ -12,4 +12,4 @@ class Answer(db.Model):
         return [self.combined_hash, self.choices, self.result, self.color]
 
     def __repr__(self):
-        return (f'<Answer({self.combined_hash=}, {self.choices=}, {self.result=}, {self.color=},')
+        return (f'<Answer({self.combined_hash=}, {self.choices=}, {self.result=}, {self.color=}>')

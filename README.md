@@ -14,11 +14,17 @@ pip install -r requirements.txt
 
 ## Database
 
+View database:
 `python .\database_viewer.py`
 
-Login to heroku 
+Fill database:
+`python .\database_filler.py 100`
+
+## Download database file from Heroku
+Login to heroku:
 `heroku login`
-Download database file
+
+Download database file:
 `heroku ps:copy app/app.db --app fourpersonalityquiz`
 
 ## Screenshots

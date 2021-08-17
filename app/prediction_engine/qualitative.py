@@ -1,6 +1,7 @@
 import matplotlib
 matplotlib.use('Agg')   # Use matplotlib as backend renderer
 import matplotlib.pyplot as plt
+import seaborn as sns
 import io
 import base64
 import math
@@ -25,36 +26,6 @@ def getCounts(choices):
         counter[answersheet[count].get(choice)] += 1
     return counter
 
-# Returns base64 image plot of personality type plotted on graph
-def createPlot(choices):
-    img = io.BytesIO()
-
-    fig,ax = plt.subplots(figsize=(5,5))
-    ax.set_xlim(-10,10)
-    ax.set_ylim(-10,10)
-
-    plt.xticks([])
-    plt.yticks([])
-
-    ax.axvline(0,color = 'black',linestyle='solid',linewidth=1)
-    ax.axhline(0,color = 'black',linestyle='solid',linewidth=1)
-
-    ax.fill_between([-10, 0],-10,0,alpha=0.9, color='#00FF00')  # green
-    ax.fill_between([-10, 0], 0, 10, alpha=0.9, color='#0000FF')  # blue
-    ax.fill_between([0, 10], 0, 10, alpha=0.9, color='#FF0000')  # red
-    ax.fill_between([0, 10], -10, 0, alpha=0.9, color='#FFFF00')  # yellow
-
-    x,y = getPosition(choices)
-    plt.plot(x, y, marker='o', markersize=7, color='black')
-
-    ax.axes.get_xaxis().set_visible(False)
-    ax.axes.get_yaxis().set_visible(False)
-    ax.set_frame_on(False)
-    plt.savefig(img, format='png', bbox_inches='tight', pad_inches = 0, transparent=True)
-
-    plot_img = base64.b64encode(img.getvalue()).decode()
-
-    return plot_img
 
 # Returns list of predicted personality types
 def predict(choices):
@@ -93,6 +64,7 @@ def predict(choices):
 
     return colors, counter
 
+
 # Returns number instead of list of predicted personality type
 def predictNumber(choices):
     colors, counter = predict(choices)
@@ -125,6 +97,7 @@ def predictNumber(choices):
         prediction = 9
 
     return prediction, counter
+
 
 # Returns procentage of each color depending on distance to each corner
 def getColorProcentage(choices):
@@ -173,6 +146,7 @@ def getColorProcentage(choices):
     '''
 
     return [green_procentage, blue_procentage, red_procentage, yellow_procentage]
+
 
 # Returns x,y position of choices
 def getPosition(choices):

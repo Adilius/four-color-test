@@ -11,12 +11,15 @@ def generateAnswer():
     choices = [random.randrange(1, 5, 1) for _ in range(10)]
 
     # Compute using random data
-    user_color, _ = qualitative.predictNumber(choices)
+    user_color, counters = qualitative.predictNumber(choices)
     user_position = qualitative.getPosition(choices)
+    color_procentages = qualitative.getColorProcentage(choices)
 
     # Create an answer to push to database
     answer = Answer(combined_hash = combined_hash,
                     choices = choices,
+                    counters = counters,
+                    color_procentages = color_procentages,
                     result = user_position,
                     color = user_color)
 

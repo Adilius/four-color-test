@@ -59,16 +59,16 @@
       <div style="text-align: center;">
         <img src="data:image/png;base64, {{plot_url}}">
       </div>
-      <div style="text-align: center;">
-        <img src="data:image/png;base64, {{all_plot_url}}">
-      </div>
+
       <br><br><br>
-      <p><samp>
+      <p>
+        <samp>
           Color procentages:<br>
-          Green:&nbsp;&nbsp;{{color_procentages[0]}}%<br>
-          Blue:&nbsp;&nbsp;&nbsp;{{color_procentages[1]}}%<br>
-          Red:&nbsp;&nbsp;&nbsp;&nbsp;{{color_procentages[2]}}%<br>
-          Yellow:&nbsp;{{color_procentages[3]}}%</samp></p>
+          {% for key, value in color_procentages.items() %}
+            {{ '%-10s %s' | format(key, value) }}<br>
+          {% endfor %}
+        </samp>
+      </p>
     </div>
   </div>
 </div>

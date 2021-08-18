@@ -3,6 +3,8 @@ matplotlib.use('Agg')   # Use matplotlib as backend renderer
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
+import numpy as np
+from scipy.stats import kde
 import io
 import base64
 
@@ -39,17 +41,15 @@ def createPlot(user_position):
     return plot_img
 
 
-def plotAll(user_x_position_list, user_y_position_list):
+def plotAll(x, y):
     img = io.BytesIO()
 
-    df = pd.DataFrame({ "x":user_x_position_list,
-                        "y":user_y_position_list})
+
 
     fig,ax = plt.subplots(figsize=(5,5))
     ax.set_xlim(-10,10)
     ax.set_ylim(-10,10)
-
-    sns.jointplot(x='x', y='y', kind = 'kde', data = df)
+    
 
     plt.xticks([])
     plt.yticks([])

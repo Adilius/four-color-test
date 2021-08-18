@@ -119,7 +119,6 @@ def getColorProcentage(choices):
     yellow_distance = math.sqrt(pow(x-10, 2) + pow(y+10, 2))
     yellow_distance_inversed = 1/yellow_distance
 
-    total = green_distance + blue_distance + red_distance + yellow_distance
     inversed_total = green_distance_inversed + blue_distance_inversed + red_distance_inversed + yellow_distance_inversed
 
     green_procentage = int(round((green_distance_inversed/inversed_total)*100))
@@ -127,25 +126,16 @@ def getColorProcentage(choices):
     red_procentage = int(round((red_distance_inversed/inversed_total)*100))
     yellow_procentage = int(round((yellow_distance_inversed/inversed_total)*100))
 
-    '''
-    print("X:", x, " Y:", y)
-    print("Green distance:", green_distance)
-    print("Green inversed:", green_distance_inversed)
-    print("Green procentage:", green_procentage)
-    print("Blue distance:", blue_distance)
-    print("Blue distance inversed:", blue_distance_inversed)
-    print("Blue procentage:", blue_procentage)
-    print("Red distance:", red_distance)
-    print("Red distance inversed:", red_distance_inversed)
-    print("Red procentage:", red_procentage)
-    print("Yellow distance:", yellow_distance)
-    print("Yellow distance inversed:", yellow_distance_inversed)
-    print("Yellow procentage:", yellow_procentage)
-    print("Total:", total)
-    print("Inversed total:", inversed_total)
-    '''
+    color_procentages = {
+        'Green:': green_procentage,
+        'Blue:': blue_procentage,
+        'Red:': red_procentage,
+        'Yellow:': yellow_procentage
+    }
 
-    return [green_procentage, blue_procentage, red_procentage, yellow_procentage]
+    color_procentages = dict(sorted(color_procentages.items(), key=lambda item: item[1], reverse=True))
+
+    return color_procentages
 
 
 # Returns x,y position of choices

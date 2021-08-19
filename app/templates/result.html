@@ -61,14 +61,17 @@
       </div>
 
       <br><br><br>
-      <p>
         <samp>
-          Color procentages:<br>
-          {% for key, value in color_procentages.items() %}
-            {{ '%-10s %s' | format(key, value) }}<br>
-          {% endfor %}
+          <table>
+            Color procentages:<br>
+            {% for key, value in color_procentages.items() %}
+            <tr>
+              <td>{{key}}</td>
+              <td>&nbsp;&nbsp;{{value}}%</td>
+            </tr>
+            {% endfor %}
+          </table>
         </samp>
-      </p>
     </div>
   </div>
 </div>

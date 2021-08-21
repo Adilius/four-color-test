@@ -44,12 +44,9 @@ def createPlot(user_position):
 def plotAll(x, y):
     img = io.BytesIO()
 
-
-
     fig,ax = plt.subplots(figsize=(5,5))
     ax.set_xlim(-10,10)
     ax.set_ylim(-10,10)
-    
 
     plt.xticks([])
     plt.yticks([])

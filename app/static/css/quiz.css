@@ -30,7 +30,7 @@
     left: 0;
     height: 25px;
     width: 25px;
-    background-color: #555;
+    background-color: #ddd;
     border: 1px solid #ddd;
     border-radius: 50%
 }
@@ -60,4 +60,19 @@
 
 .options input[type="radio"]:checked~.checkmark:after {
     transform: translate(-50%, -50%) scale(1)
+}
+
+#questionsCompleted {
+    margin-top: 40px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (min-width: 1500px) {
+
+.questions-block {
+    display: block !important;
+}
+
 }

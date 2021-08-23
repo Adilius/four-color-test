@@ -2,7 +2,7 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}">
-<title>Personality quiz</title>
+<title>Quiz</title>
 {% endblock %}
 
 {% block body %}
@@ -18,7 +18,7 @@
 </div>
 <script>
     function randomChoices() {
-    var radioGroups = ['role','friends','speak','work','event','activity','self','comfortable','friendship','core'];
+    var radioGroups = ['1work1','2work2','3work3','4self1','5self2','6self3','7self4','8self5','9self6','10social1','11social2'];
     for (var i = 0; i < radioGroups.length; i++){
         var array = document.getElementsByName(radioGroups[i]);
         var randomNumber=Math.floor(Math.random()*4);
@@ -27,96 +27,51 @@
 }
 </script>
 <!-- Testing code -->
-{% endif %}
+{% endif %} 
 <div class="container my-5">
     <div>
         <p class="h5 options-title">Which role do you take in a project?</p>
         <div class="pt-3 options">
-            <label class="options">Driving the project
-                <input type="radio" required name="role" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">Leading the project
+                <input type="radio" required name="1work1" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
             <label class="options">Providing valuable feedback
-                <input type="radio" required name="role" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+                <input type="radio" required name="1work1" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
             <label class="options">Creating new ideas
-                <input type="radio" required name="role" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+                <input type="radio" required name="1work1" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
             <label class="options">Taking detailed notes
-                <input type="radio" required name="role" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+                <input type="radio" required name="1work1" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
         </div>
     </div>
 </div>
-<div class="container my-5">
-    <div>
-        <p class="h5 options-title">What would your friends describe you as?</p>
-        <div class="pt-3 options">
-            <label class="options">Likes company and comes up with fun stuff
-                <input type="radio" required name="friends" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
-            <label class="options">Accurate, picky, and always on time
-                <input type="radio" required name="friends" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
-            <label class="options">Purposeful and not afraid to say what you think
-                <input type="radio" required name="friends" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
-            <label class="options">Caring and always stands up for others
-                <input type="radio" required name="friends" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
-        </div>
-    </div>
-</div>
-<div class="container my-5">
-    <div>
-        <p class="h5 options-title">How do you speak in front of a group?</p>
-        <div class="pt-3 options">
-            <label class="options">I gesture and move a lot
-                <input type="radio" required name="speak" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
-            <label class="options">I am gathered and speak in a calm and harmonious voice
-                <input type="radio" required name="speak" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
-            <label class="options">I speak with pressure in my voice and am not afraid to ask questions to the group
-                <input type="radio" required name="speak" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
-            <label class="options">I prefer to present facts and information in detail
-                <input type="radio" required name="speak" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
-        </div>
-    </div>
-</div>
+
 <div class="container my-5">
     <div>
         <p class="h5 options-title">What is most important for you in a work enviroment?</p>
         <div class="pt-3 options">
             <label class="options">To help my co-workers and create an inovating enviroment
-                <input type="radio" required name="work" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+                <input type="radio" required name="2work2" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
             <label class="options">To get a good deal of work done and to see results
-                <input type="radio" required name="work" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+                <input type="radio" required name="2work2" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
             <label class="options">To get the admiration of my co-workers and peers
-                <input type="radio" required name="work" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+                <input type="radio" required name="2work2" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
             <label class="options">To thoroughly finish each task before moving to the next
-                <input type="radio" required name="work" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+                <input type="radio" required name="2work2" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
         </div>
     </div>
 </div>
 
 <div class="container my-5">
     <div>
-        <p class="h5 options-title">What would you do at an event with many people you have yet to meet?</p>
+        <p class="h5 options-title">Which type of project do you enjoy doing the most?</p>
         <div class="pt-3 options">
-            <label class="options">Find the group of people with whom I am comfortable with
-                <input type="radio" required name="event" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
-            <label class="options">Seek a good spot to observe the event and only talk if someone else approaches
-                <input type="radio" required name="event" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
-            <label class="options">Talk to the people I have to speak with to fulfill my purpose for attending
-                <input type="radio" required name="event" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
-            <label class="options">Meet and talk with as many people as possible before the event is over
-                <input type="radio" required name="event" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
-        </div>
-    </div>
-</div>
-
-<div class="container my-5">
-    <div>
-        <p class="h5 options-title">What type of activity do you enjoy the most?</p>
-        <div class="pt-3 options">
-            <label class="options">Comfortable and predictable tasks that benifit everyone
-                <input type="radio" required name="activity" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
-            <label class="options">Interacting with many different people to create new ideas
-                <input type="radio" required name="activity" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
-            <label class="options">Working alone and focusing on the task at hand
-                <input type="radio" required name="activity" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
-            <label class="options">Fast-paced and rapidly changing tasks to create progress
-                <input type="radio" required name="activity" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">Evaluate and collect information to build systems or plans
+                <input type="radio" required name="3work3" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">Overcome challenges and achieve big results
+                <input type="radio" required name="3work3" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">Work on my own pace and do what I know best
+                <input type="radio" required name="3work3" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">Work with different types of people on new tasks
+                <input type="radio" required name="3work3" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
         </div>
     </div>
 </div>
@@ -126,13 +81,45 @@
         <p class="h5 options-title">What do you see your self the most as?</p>
         <div class="pt-3 options">
             <label class="options">Forthright, goal-oriented, and motivating
-                <input type="radio" required name="self" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+                <input type="radio" required name="4self1" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
             <label class="options">Calm, kind, and helpful
-                <input type="radio" required name="self" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+                <input type="radio" required name="4self1" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
             <label class="options">Logical, fact-based, and correct
-                <input type="radio" required name="self" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+                <input type="radio" required name="4self1" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
             <label class="options">Cheerful, amusing, and convincing
-                <input type="radio" required name="self" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+                <input type="radio" required name="4self1" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div>
+        <p class="h5 options-title">How would you describe you as?</p>
+        <div class="pt-3 options">
+            <label class="options">Likes company and comes up with fun stuff
+                <input type="radio" required name="5self2" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">Accurate, picky, and always on time
+                <input type="radio" required name="5self2" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">Purposeful and not afraid to say what you think
+                <input type="radio" required name="5self2" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">Caring and always stands up for others
+                <input type="radio" required name="5self2" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div>
+        <p class="h5 options-title">How do you speak in front of a group?</p>
+        <div class="pt-3 options">
+            <label class="options">I gesture and move a lot
+                <input type="radio" required name="6self3" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">I am gathered and speak in a calm and harmonious voice
+                <input type="radio" required name="6self3" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">I speak with pressure in my voice and am not afraid to ask questions to the group
+                <input type="radio" required name="6self3" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">I prefer to present facts and information in detail
+                <input type="radio" required name="6self3" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
         </div>
     </div>
 </div>
@@ -142,29 +129,29 @@
         <p class="h5 options-title">What are you most comfortable with?</p>
         <div class="pt-3 options">
             <label class="options">Talking with many people and motivating others
-                <input type="radio" required name="comfortable" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+                <input type="radio" required name="7self4" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
             <label class="options">Listening patiently and assisting people
-                <input type="radio" required name="comfortable" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+                <input type="radio" required name="7self4" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
             <label class="options">Concentrating and working with detailed information
-                <input type="radio" required name="comfortable" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+                <input type="radio" required name="7self4" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
             <label class="options">Having to lead a big project that involves making many decisions
-                <input type="radio" required name="comfortable" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+                <input type="radio" required name="7self4" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
         </div>
     </div>
 </div>
 
 <div class="container my-5">
     <div>
-        <p class="h5 options-title">How do you relate to friendship?</p>
+        <p class="h5 options-title">What type of activity do you enjoy the most?</p>
         <div class="pt-3 options">
-            <label class="options">I prefer to have an abundance of close friends and acquaintances
-                <input type="radio" required name="friendship" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
-            <label class="options">I would like to have some close friends and couple of acquaintances
-                <input type="radio" required name="friendship" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
-            <label class="options">I would rather just have few close friends
-                <input type="radio" required name="friendship" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
-            <label class="options">I am fine with few or many friends and acquaintances
-                <input type="radio" required name="friendship" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">Comfortable and predictable tasks that benefit everyone
+                <input type="radio" required name="8self5" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">Interacting with many different people to create new ideas
+                <input type="radio" required name="8self5" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">Working alone and focusing on the task at hand
+                <input type="radio" required name="8self5" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">Fast-paced and rapidly changing tasks to create progress
+                <input type="radio" required name="8self5" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
         </div>
     </div>
 </div>
@@ -174,16 +161,50 @@
         <p class="h5 options-title">Which of the following do you mostly associate with the most?</p>
         <div class="pt-3 options">
             <label class="options">I truly appreciate taking on challenging and rapid issues. My decision-taking process consists for the most part on rapidly finding an effective and logical solution
-                <input type="radio" required name="core" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+                <input type="radio" required name="9self6" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
             <label class="options">I have a very strong value for relationships and people. I have high personal beliefs, especially when it comes to how people are treated
-                <input type="radio" required name="core" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+                <input type="radio" required name="9self6" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
             <label class="options">I am always asking “What if?” and exploring different ideas and connections. I often think about the theoretical or abstract just for fun
-                <input type="radio" required name="core" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+                <input type="radio" required name="9self6" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
             <label class="options">I like to take my time with the task at hand and truly sort every detail out. And I do not mind doing so unaccompanied
-                <input type="radio" required name="core" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+                <input type="radio" required name="9self6" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
         </div>
     </div>
 </div>
+
+<div class="container my-5">
+    <div>
+        <p class="h5 options-title">What would you do at an event with many people you have yet to meet?</p>
+        <div class="pt-3 options">
+            <label class="options">Find the group of people with whom I am comfortable with
+                <input type="radio" required name="10social1" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">Seek a good spot to observe the event and only talk if someone else approaches
+                <input type="radio" required name="10social1" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">Talk to the people I have to speak with to fulfill my purpose for attending
+                <input type="radio" required name="10social1" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">Meet and talk with as many people as possible before the event is over
+                <input type="radio" required name="10social1" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div>
+        <p class="h5 options-title">How do you relate to friendship?</p>
+        <div class="pt-3 options">
+            <label class="options">I prefer to have an abundance of close friends and acquaintances
+                <input type="radio" required name="11social2" value="1"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">I would like to have some close friends and couple of acquaintances
+                <input type="radio" required name="11social2" value="2"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">I would rather just have few close friends
+                <input type="radio" required name="11social2" value="3"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+            <label class="options">I am fine with few or many friends and acquaintances
+                <input type="radio" required name="11social2" value="4"  onchange="countAnswered(this.name)" > <span class="checkmark"></span> </label>
+        </div>
+    </div>
+</div>
+
+
 
 <div class="container mt-5">
     <div class="d-flex justify-content-center">

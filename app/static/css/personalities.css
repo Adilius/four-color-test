@@ -19,3 +19,9 @@
 .border-dark {
     color: var(--dark--color) !important;
 }
+
+/* Fixes anchor */
+section {
+    padding-top: 56px;
+    margin-top: -56px;
+}

@@ -38,7 +38,7 @@ function countAnswered(groupName){
 }
 
 var numberAnswered = "0"
-var numberTotalAnswers = "10"
+var numberTotalAnswers = "11"
 
 function updateNumberAnswered(newNumber){
     firstBold.textContent = newNumber

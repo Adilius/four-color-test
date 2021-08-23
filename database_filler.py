@@ -8,18 +8,19 @@ def generateAnswer():
 
     # Generate random data
     combined_hash = binascii.b2a_hex(os.urandom(16)).decode('utf-8')
-    choices = [random.randrange(1, 5, 1) for _ in range(10)]
+    user_choices = [random.randrange(1, 5, 1) for _ in range(11)]
 
     # Compute using random data
-    user_color, counters = qualitative.predictNumber(choices)
-    user_position = qualitative.getPosition(choices)
-    color_procentages = qualitative.getColorProcentage(choices)
+    user_color = qualitative.predict(user_choices)
+    user_color_counter = qualitative.getCounter(user_choices)
+    user_color_procentages = qualitative.getColorProcentage(user_choices)
+    user_position = qualitative.getPosition(user_choices)
 
     # Create an answer to push to database
     answer = Answer(combined_hash = combined_hash,
-                    choices = choices,
-                    counters = counters,
-                    color_procentages = color_procentages,
+                    choices = user_choices,
+                    counters = user_color_counter,
+                    color_procentages = user_color_procentages,
                     result = user_position,
                     color = user_color)
 

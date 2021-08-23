@@ -12,9 +12,15 @@ import base64
 def createPlot(user_position):
     img = io.BytesIO()
 
+    x_left_limit = -11.5
+    x_right_limit = 11.5
+
+    y_upper_limit = 11.5
+    y_lower_limit = -11.5
+
     fig,ax = plt.subplots(figsize=(5,5))
-    ax.set_xlim(-10,10)
-    ax.set_ylim(-10,10)
+    ax.set_xlim(x_left_limit,x_right_limit)
+    ax.set_ylim(y_lower_limit,y_upper_limit)
 
     plt.xticks([])
     plt.yticks([])
@@ -22,10 +28,11 @@ def createPlot(user_position):
     ax.axvline(0,color = 'black',linestyle='solid',linewidth=1)
     ax.axhline(0,color = 'black',linestyle='solid',linewidth=1)
 
-    ax.fill_between([-10, 0],-10,0,alpha=0.9, color='#00FF00')  # green
-    ax.fill_between([-10, 0], 0, 10, alpha=0.9, color='#0000FF')  # blue
-    ax.fill_between([0, 10], 0, 10, alpha=0.9, color='#FF0000')  # red
-    ax.fill_between([0, 10], -10, 0, alpha=0.9, color='#FFFF00')  # yellow
+    # [x1, x2], y1, y2
+    ax.fill_between([x_left_limit, 0], y_lower_limit,0,alpha=0.9, color='#00FF00')  # Green
+    ax.fill_between([x_left_limit, 0], 0, y_upper_limit, alpha=0.9, color='#0000FF')  # blue
+    ax.fill_between([0, x_right_limit], 0, y_upper_limit, alpha=0.9, color='#FF0000')  # red
+    ax.fill_between([0, x_right_limit], y_lower_limit, 0, alpha=0.9, color='#FFFF00')  # yellow
 
     x = user_position[0]
     y = user_position[1]

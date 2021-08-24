@@ -106,6 +106,7 @@ def result():
 def personalities():
     return render_template('personalities.html')
 
+# Handle 404 errors
 @app.errorhandler(404)
 def error_404(error):
     print(error)

@@ -27,6 +27,15 @@ Login to heroku:
 Download database file:
 `heroku ps:copy app/app.db --app fourpersonalityquiz`
 
+## Update SSL Certificate
+
+`certbot certonly --manual --preferred-challenges dns`
+
+`fourpersonalityquiz.com`
+
+1. Change TXT record in namecheap to `_acme-challenge.fourpersonalityquiz.com`
+2. Update value of that record to given value
+
 ## Screenshots
 
 ![image](https://user-images.githubusercontent.com/43440295/128189167-46b129c0-f499-4efa-b774-159ba942b1d5.png)

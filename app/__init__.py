@@ -1,8 +1,6 @@
 from flask import Flask
-from flask_talisman import Talisman #SSL
 
 app = Flask(__name__)
-talisman = Talisman(app)    #SSL
 
 #Configuration of application, see configuration.py, choose one and uncomment.
 configuration = 'app.configuration.ProductionConfig'

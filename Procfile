@@ -1,1 +1,1 @@
-web: gunicorn app:app
+web: --certfile=cert.pem --keyfile=privkey.pem gunicorn app:app

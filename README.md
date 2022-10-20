@@ -1,6 +1,7 @@
 # Fourpersonalityquiz
 
 Personality quiz written in Flask
+https://fourpersonalityquiz.herokuapp.com/
 
 ## Setup
 
